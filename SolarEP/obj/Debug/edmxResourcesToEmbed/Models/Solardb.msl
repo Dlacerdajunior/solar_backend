@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SolardbModelStoreContainer" CdmEntityContainer="SolardbEntities">
+    <EntitySetMapping Name="adm_tipo">
+      <EntityTypeMapping TypeName="SolardbModel.adm_tipo">
+        <MappingFragment StoreEntitySet="adm_tipo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="administrador">
+      <EntityTypeMapping TypeName="SolardbModel.administrador">
+        <MappingFragment StoreEntitySet="administrador">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="mandante" ColumnName="mandante" />
+          <ScalarProperty Name="email_codigo" ColumnName="email_codigo" />
+          <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+          <ScalarProperty Name="adm_tipo" ColumnName="adm_tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ajuda">
+      <EntityTypeMapping TypeName="SolardbModel.ajuda">
+        <MappingFragment StoreEntitySet="ajuda">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="url" ColumnName="url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="backgrounds">
+      <EntityTypeMapping TypeName="SolardbModel.backgrounds">
+        <MappingFragment StoreEntitySet="backgrounds">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="url_background" ColumnName="url_background" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="campanha_ativa">
+      <EntityTypeMapping TypeName="SolardbModel.campanha_ativa">
+        <MappingFragment StoreEntitySet="campanha_ativa">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ativa" ColumnName="ativa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="campanha_foto">
+      <EntityTypeMapping TypeName="SolardbModel.campanha_foto">
+        <MappingFragment StoreEntitySet="campanha_foto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_campanha" ColumnName="id_campanha" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="campanha_loja">
+      <EntityTypeMapping TypeName="SolardbModel.campanha_loja">
+        <MappingFragment StoreEntitySet="campanha_loja">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+          <ScalarProperty Name="id_campanha" ColumnName="id_campanha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="campanha_tipo">
+      <EntityTypeMapping TypeName="SolardbModel.campanha_tipo">
+        <MappingFragment StoreEntitySet="campanha_tipo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categoria_produto">
+      <EntityTypeMapping TypeName="SolardbModel.categoria_produto">
+        <MappingFragment StoreEntitySet="categoria_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="categoria_nome" ColumnName="categoria_nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="checklist_codigo">
+      <EntityTypeMapping TypeName="SolardbModel.checklist_codigo">
+        <MappingFragment StoreEntitySet="checklist_codigo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="checklist_equipamento">
+      <EntityTypeMapping TypeName="SolardbModel.checklist_equipamento">
+        <MappingFragment StoreEntitySet="checklist_equipamento">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="texto" ColumnName="texto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="documentos">
+      <EntityTypeMapping TypeName="SolardbModel.documentos">
+        <MappingFragment StoreEntitySet="documentos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="arquivo_url" ColumnName="arquivo_url" />
+          <ScalarProperty Name="criacao" ColumnName="criacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="equipamento_loja">
+      <EntityTypeMapping TypeName="SolardbModel.equipamento_loja">
+        <MappingFragment StoreEntitySet="equipamento_loja">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_equipamento" ColumnName="id_equipamento" />
+          <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="equipamentos">
+      <EntityTypeMapping TypeName="SolardbModel.equipamentos">
+        <MappingFragment StoreEntitySet="equipamentos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="url_foto" ColumnName="url_foto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="faq">
+      <EntityTypeMapping TypeName="SolardbModel.faq">
+        <MappingFragment StoreEntitySet="faq">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="faq_grupo" ColumnName="faq_grupo" />
+          <ScalarProperty Name="faq_pergunta" ColumnName="faq_pergunta" />
+          <ScalarProperty Name="faq_resposta" ColumnName="faq_resposta" />
+          <ScalarProperty Name="ultima_atualizacao" ColumnName="ultima_atualizacao" />
+          <ScalarProperty Name="color" ColumnName="color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gestao_campanha">
+      <EntityTypeMapping TypeName="SolardbModel.gestao_campanha">
+        <MappingFragment StoreEntitySet="gestao_campanha">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="url_foto" ColumnName="url_foto" />
+          <ScalarProperty Name="descricao_curta" ColumnName="descricao_curta" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="permissao_img" ColumnName="permissao_img" />
+          <ScalarProperty Name="aderir" ColumnName="aderir" />
+          <ScalarProperty Name="url_facebok" ColumnName="url_facebok" />
+          <ScalarProperty Name="url_twitter" ColumnName="url_twitter" />
+          <ScalarProperty Name="url_youtube" ColumnName="url_youtube" />
+          <ScalarProperty Name="id_tipocampanha" ColumnName="id_tipocampanha" />
+          <ScalarProperty Name="url_arquivo" ColumnName="url_arquivo" />
+          <ScalarProperty Name="url_ldpi" ColumnName="url_ldpi" />
+          <ScalarProperty Name="url_mdpi" ColumnName="url_mdpi" />
+          <ScalarProperty Name="url_hdpi" ColumnName="url_hdpi" />
+          <ScalarProperty Name="url_xhdpi" ColumnName="url_xhdpi" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="link_nome" ColumnName="link_nome" />
+          <ScalarProperty Name="permitir_lista" ColumnName="permitir_lista" />
+          <ScalarProperty Name="iphone4" ColumnName="iphone4" />
+          <ScalarProperty Name="iphone5" ColumnName="iphone5" />
+          <ScalarProperty Name="iphone6" ColumnName="iphone6" />
+          <ScalarProperty Name="iphone6plus" ColumnName="iphone6plus" />
+          <ScalarProperty Name="base64_foto" ColumnName="base64_foto" />
+          <ScalarProperty Name="ativa" ColumnName="ativa" />
+          <ScalarProperty Name="icon_image" ColumnName="icon_image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="grupos_faq">
+      <EntityTypeMapping TypeName="SolardbModel.grupos_faq">
+        <MappingFragment StoreEntitySet="grupos_faq">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="grupo_faq" ColumnName="grupo_faq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="listacompra_loja">
+      <EntityTypeMapping TypeName="SolardbModel.listacompra_loja">
+        <MappingFragment StoreEntitySet="listacompra_loja">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+          <ScalarProperty Name="id_campanha" ColumnName="id_campanha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loja_status">
+      <EntityTypeMapping TypeName="SolardbModel.loja_status">
+        <MappingFragment StoreEntitySet="loja_status">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="status_nome" ColumnName="status_nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pedido">
+      <EntityTypeMapping TypeName="SolardbModel.pedido">
+        <MappingFragment StoreEntitySet="pedido">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+          <ScalarProperty Name="id_status" ColumnName="id_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="produtos">
+      <EntityTypeMapping TypeName="SolardbModel.produtos">
+        <MappingFragment StoreEntitySet="produtos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="preco" ColumnName="preco" />
+          <ScalarProperty Name="url_foto" ColumnName="url_foto" />
+          <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="solicitacao">
+      <EntityTypeMapping TypeName="SolardbModel.solicitacao">
+        <MappingFragment StoreEntitySet="solicitacao">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="numero_comodato" ColumnName="numero_comodato" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="descricao_problema" ColumnName="descricao_problema" />
+          <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="status_pedido">
+      <EntityTypeMapping TypeName="SolardbModel.status_pedido">
+        <MappingFragment StoreEntitySet="status_pedido">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="status_nome" ColumnName="status_nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="uf">
+      <EntityTypeMapping TypeName="SolardbModel.uf">
+        <MappingFragment StoreEntitySet="uf">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="uf_sigla" ColumnName="uf_sigla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="visita_chamado">
+      <EntityTypeMapping TypeName="SolardbModel.visita_chamado">
+        <MappingFragment StoreEntitySet="visita_chamado">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_visita" ColumnName="id_visita" />
+          <ScalarProperty Name="chamado" ColumnName="chamado" />
+          <ScalarProperty Name="data" ColumnName="data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="visita_fotos">
+      <EntityTypeMapping TypeName="SolardbModel.visita_fotos">
+        <MappingFragment StoreEntitySet="visita_fotos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_visita" ColumnName="id_visita" />
+          <ScalarProperty Name="url_foto" ColumnName="url_foto" />
+          <ScalarProperty Name="data" ColumnName="data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="visita_status">
+      <EntityTypeMapping TypeName="SolardbModel.visita_status">
+        <MappingFragment StoreEntitySet="visita_status">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="log_acesso">
+      <EntityTypeMapping TypeName="SolardbModel.log_acesso">
+        <MappingFragment StoreEntitySet="log_acesso">
+          <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+          <ScalarProperty Name="datalog" ColumnName="datalog" />
+          <ScalarProperty Name="tela" ColumnName="tela" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ciclo_robo">
+      <EntityTypeMapping TypeName="SolardbModel.ciclo_robo">
+        <MappingFragment StoreEntitySet="ciclo_robo">
+          <ScalarProperty Name="ciclo" ColumnName="ciclo" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="metodo" ColumnName="metodo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="configuracao">
+      <EntityTypeMapping TypeName="SolardbModel.configuracao">
+        <MappingFragment StoreEntitySet="configuracao">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="visita">
+      <EntityTypeMapping TypeName="SolardbModel.visita">
+        <MappingFragment StoreEntitySet="visita">
+          <ScalarProperty Name="tag_equipamento" ColumnName="tag_equipamento" />
+          <ScalarProperty Name="previsao" ColumnName="previsao" />
+          <ScalarProperty Name="atualiza" ColumnName="atualiza" />
+          <ScalarProperty Name="HERST" ColumnName="HERST" />
+          <ScalarProperty Name="EQUNR" ColumnName="EQUNR" />
+          <ScalarProperty Name="TYPBZ" ColumnName="TYPBZ" />
+          <ScalarProperty Name="EQFNR" ColumnName="EQFNR" />
+          <ScalarProperty Name="obs_admin" ColumnName="obs_admin" />
+          <ScalarProperty Name="id_equipamento" ColumnName="id_equipamento" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="contato" ColumnName="contato" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="id_status" ColumnName="id_status" />
+          <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lojas">
+      <EntityTypeMapping TypeName="SolardbModel.lojas">
+        <MappingFragment StoreEntitySet="lojas">
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="kunnr" ColumnName="kunnr" />
+          <ScalarProperty Name="email_codigo" ColumnName="email_codigo" />
+          <ScalarProperty Name="status_loja" ColumnName="status_loja" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="longtext" ColumnName="longtext" />
+          <ScalarProperty Name="lattext" ColumnName="lattext" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email_contato" ColumnName="email_contato" />
+          <ScalarProperty Name="nome_contato" ColumnName="nome_contato" />
+          <ScalarProperty Name="loja_ativa" ColumnName="loja_ativa" />
+          <ScalarProperty Name="razao_social_loja" ColumnName="razao_social_loja" />
+          <ScalarProperty Name="cnpj_loja" ColumnName="cnpj_loja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,46 @@
+﻿@model SolarEP.Models.configuracao
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAjax.cshtml";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formadicionarconfig" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <script>
+        $(function () {
+            // your code goes here
+            $("#btadicionarconfig").click(function () {
+                nome = $("#nome").val()
+                valor = $("#valor").val()
+                if (nome == "" || valor == "") {
+                    alert("É necessário preencher os campos abaixo.");
+                    return false;
+                }
+                else {
+                    $("#formadicionarconfig").submit();
+                }
+            });
+        });
+    </script>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label" for="nome">Nome</label>
+        <div class="col-md-10">
+            <input class="form-control" id="nome" name="nome" type="text" value="EmailMonitoramento" readonly="readonly">
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.valor, "E-mail", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.valor, new { @class = "form-control", placeholder = "E-mail" })
+            @Html.ValidationMessageFor(model => model.valor)
+        </div>
+    </div>
+
+}
+

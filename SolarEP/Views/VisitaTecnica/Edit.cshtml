@@ -1,0 +1,351 @@
+﻿@model SolarEP.Models.visita
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    
+<script src="@Url.Content("~/Content/assets/vendor/jquery/jquery.js")"></script>
+
+
+<script>
+    
+    $(function () {
+        $('#previsao').mask('00/00/0000');
+
+
+        $("#btadicionarchamado").click(function () {
+
+            $("#formadiconarchamado").submit();
+        });
+
+        $(".btdeletarchamadolink").click(function () {
+
+            $("#modaldeletarchamado").load($(this).attr('href'));
+
+            $("#modaldeletarlink1").trigger("click");
+
+            return false;
+
+        });
+
+
+        $("#btdeletarchamado").click(function () {
+
+            $("#formdeletarchamado").submit();
+
+        });
+
+    });
+</script>
+
+
+<style>
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+</style>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+<header class="page-header">
+    <h2>Editar Visita Técnica</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="home.html">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li><span>Editar Visita Técnica</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"></a>
+    </div>
+</header>
+
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="panel-actions">
+                    <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                </div>
+
+                <h2 class="panel-title">Editar Visita Técnica</h2>
+            </header>
+            <div class="panel-body">
+
+                @Html.HiddenFor(model => model.id)
+                @Html.HiddenFor(model => model.id_equipamento)
+                @Html.HiddenFor(model => model.id_loja)
+                @Html.HiddenFor(model => model.data)
+                @Html.HiddenFor(model => model.EQFNR)
+                @Html.HiddenFor(model => model.TYPBZ)
+                @Html.HiddenFor(model => model.EQUNR)
+                @Html.HiddenFor(model => model.HERST)
+                @Html.HiddenFor(model => model.atualiza)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.titulo, "Título", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.titulo, new { @class = "fotobase64 form-control", placeholder = "Título", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.titulo)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.descricao, "Descrição", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.descricao, new { @class = "fotobase64 form-control", placeholder = "Descrição", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.descricao)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.contato, "Contato", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.contato, new { @class = "fotobase64 form-control", placeholder = "Contato", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.contato)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.id_equipamento, "Equipamento", new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(model => model.id_equipamento, new { @class = "fotobase64 form-control", placeholder = "", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.tag_equipamento, "TAG do Equipamento", new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(model => model.tag_equipamento, new { @class = "fotobase64 form-control", placeholder = "TAG do Equipamento", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.tag_equipamento)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.id_loja, "Razão Social Loja", new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(model => model.lojas.razao_social_loja, new { @class = "fotobase64 form-control", placeholder = "", @readonly = "readonly" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.id_loja, "CPF/CNPJ Loja", new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(model => model.lojas.cnpj_loja, new { @class = "fotobase64 form-control", placeholder = "", @readonly = "readonly" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.id_status, "Status", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("id_status")
+                        @Html.ValidationMessageFor(model => model.id_status)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.previsao, "Previsto para", new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.previsao, new { @class = "form-control", placeholder = "00/00/0000" })
+                    </div>
+                </div>
+              <!--  <label class="col-sm-2 control-label" for="previsao">Previsto para</label>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        <input name="previsao" type="text" class="form-control">
+                    </div>
+                </div> -->
+                <br />
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.obs_admin, "Observação do Administrador", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.obs_admin, new { @class = "form-control", placeholder = "Observação do Administrador" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Salvar" class="btn btn-default" />
+                    </div>
+                </div>
+
+
+      <!--          <div class="row">
+                    <div class="col-md-12">
+                        <section class="panel">
+                            <header class="panel-heading">
+                                <div class="panel-actions">
+                                    <div class="col-sm-6">
+                                        <div class="mb-md">
+                                            <a href="#modalAnim" id="modaladicionarchamadolink" class="panel-action fa fa-plus modal-with-zoom-anim"></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h2 class="panel-title">Chamados</h2>
+                            </header>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table mb-none">
+                                        <thead>
+                                            <tr>
+                                                <th width="90%">Chamado</th>
+                                                <th width="10%">Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                var rschamado = ViewBag.rschamadomostrar;
+                                                var chamadomostrar = ViewBag.rschamadomostrarcount;
+
+                                                if (chamadomostrar == 1)
+                                                {
+                                                    foreach (var item in rschamado)
+                                                    {
+                                                        <tr>
+                                                            <td>@item.chamado</td>
+
+                                                            <td class="actions">
+                                                                <a href="@Url.Content("~/VisitaTecnica/Deletechamado/"+item.id)" class="btdeletarchamadolink "><i class="fa fa-trash-o"></i></a>
+
+                                                                <a href="#modalRemoverChamado" id="modaldeletarlink1" class="delete-row modal-with-zoom-anim" style="display:none;"><i class="fa fa-trash-o"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div> -->
+
+                <header class="panel-heading">
+                    <h2 class="panel-title">Fotos</h2>
+                </header>
+                <br />
+
+                <div class="table">
+                    <table class="table mb-none dataTable no-footer" id="table-scroll" role="grid" aria-describedby="table-scroll_info">
+                        <thead>
+                            <tr>
+                                <th width="70%">Foto</th>
+                                <th width="30%">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var rsmanutencaofoto = ViewBag.fotosmanutencao;
+                                var fotosmanutencaomostrar = ViewBag.fotosmanutencaomostrar;
+
+                                if (fotosmanutencaomostrar == 1)
+                                {
+                                    foreach (var item in rsmanutencaofoto)
+                                    {
+                                        <tr>
+                                            <td><img src="@item.url_foto" /></td>
+
+                                            <td> @item.data </td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+    
+}
+
+<!-- Modal Remover Chamado -->
+<div id="modalRemoverChamado" class="zoom-anim-dialog modal-block modal-block-danger mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Deletar</h2>
+        </header>
+        <div class="panel-body" id="modaldeletarchamado">
+
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-danger modal-delete" id="btdeletarchamado">Confirmar</button>
+                    <button class="btn btn-default modal-dismiss">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+
+
+<!-- Modal Adicionar -->
+<div id="modalAnim" class="zoom-anim-dialog modal-block modal-block-primary mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Chamados</h2>
+        </header>
+        <div class="panel-body" id="modaladicionarchamado">
+            <div class="modal-wrapper">
+                @using (Html.BeginForm("adicionarchamado", null, FormMethod.Post, new { id = "formadiconarchamado" }))
+                {
+                <!--conteudo aqui -->
+                    <div class="form-group">
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="chamado">Novo Chamado</label>
+                            <div class="col-md-8">
+                                <textarea class="form-control" cols="20" id="chamado" name="chamado" placeholder="Novo Chamado" rows="2"></textarea>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="id_visita" value="@Model.id" />
+
+                    </div>
+                }
+            </div>
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success modal-confirm" id="btadicionarchamado">Adicionar</button>
+                    <button class="btn btn-default modal-dismiss">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>

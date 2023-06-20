@@ -1,0 +1,23 @@
+﻿@model SolarEP.Models.lojas
+@{
+    ViewBag.Title = "Aprovar";
+    Layout = "~/Views/Shared/_LayoutAjax.cshtml";
+}
+
+
+<div class="modal-wrapper">
+    <div class="modal-icon">
+        <i class="fa fa-check" style="color:#47a447"></i>
+    </div>
+
+    <div class="modal-text">
+        <p>Tem certeza que deseja aprovar essa loja?</p>
+    </div>
+
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formaprovarloja" }))
+    {
+        @Html.AntiForgeryToken()
+    }
+
+</div>

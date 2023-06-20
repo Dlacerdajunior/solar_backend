@@ -1,0 +1,25 @@
+﻿@model SolarEP.Models.produtos
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAjax.cshtml";
+}
+
+
+<div class="modal-wrapper">
+    <div class="modal-icon">
+        <i class="fa fa-times-circle"></i>
+    </div>
+
+    <div class="modal-text">
+        <p>Tem certeza que deseja excluir?</p>
+    </div>
+
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formdeletartbprecos" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+    }
+
+</div>

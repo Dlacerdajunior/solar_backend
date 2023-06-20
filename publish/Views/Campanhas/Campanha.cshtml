@@ -1,0 +1,201 @@
+﻿@model PagedList.IPagedList<SolarEP.Models.gestao_campanha>
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Campanha";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="@Url.Content("~/Content/assets/vendor/jquery/jquery.js")"></script>
+
+<script>
+    $(function () {
+        // your code goes here
+
+        $(".btdeletarcampanhalink").click(function () {
+
+            $("#modaldeletarcampanha").load($(this).attr('href'));
+
+            $("#modaldeletarlink").trigger("click");
+
+            return false;
+
+        });
+
+        $("#btdeletarcampanha").click(function () {
+
+            $("#formdeletarcampanha").submit();
+
+        });
+
+    });
+
+</script>
+
+<style>
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+</style>
+
+<header class="page-header">
+    <h2>Promoções</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li><span>Promoções</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"></a>
+    </div>
+</header>
+
+<!-- start: page -->
+
+<form action="" method="get" class="form-horizontal">
+    <div class="form-group">
+        <div class="col-sm-4">
+            <label class="control-label">Título</label>
+            <input id="titulo" name="titulo" type="text" class="form-control valid">
+        </div>
+        <div class="col-sm-4">
+        <label class="control-label">Descrição Curta</label>
+            <input id="descricao_curta" name="descricao_curta" type="text" class="form-control valid">
+        </div>
+        <div class="col-sm-4">
+        <label class="control-label">Permite Adesão</label>
+            <br />
+            <input id="statusssim" name="aderir" type="radio" value="1">
+            <label for="statusssim">Sim</label>
+            <input id="statussnao" name="aderir" type="radio" value="0">
+            <label for="statussnao">Não</label>
+        </div>
+    </div>
+
+    <div class="panel">
+        <input value="Filtrar" id="btsubmit" type="submit" class="btn btn-default" />
+    </div>
+</form>
+
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="panel-actions">
+                    <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                </div>
+
+                <h2 class="panel-title">Promoções (@ViewBag.qtd)</h2>
+            </header>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table mb-none">
+                        <thead>
+                            <tr>
+                                <th width="20%">Título</th>
+                                <th width="50%">Descrição Curta</th>
+                                <th width="20%">Permite adesão</th>
+                                <th width="10%">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.titulo)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.descricao_curta)</td>
+                                    <td>
+                                        @if (item.aderir == 1)
+                                        {
+                                            <p>Sim</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Não</p>
+                                        }  
+                                    </td>
+                                    <td class="actions">
+
+                                        <a href="@Url.Content("~/Campanhas/EditCampanha/"+item.id)" class="bteditarcampanha"><i class="fa fa-pencil"></i></a>
+
+
+                                        <a href="@Url.Content("~/Campanhas/delete/"+item.id)" class="btdeletarcampanhalink "><i class="fa fa-trash-o"></i></a>
+
+                                        <a href="#modalRemover" id="modaldeletarlink" class="delete-row modal-with-zoom-anim" style="display:none;"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            Página @Model.PageNumber de @Model.PageCount
+            @Html.PagedListPager(Model, Page => Url.Action("Campanha", new { pagina = Page, titulo = Request.QueryString["titulo"], descricao_curta = Request.QueryString["descricao_curta"], aderir = Request.QueryString["aderir"] }))
+        </section>
+    </div>
+</div>
+
+<!-- Modal atualizar -->
+<div id="modalAdd" class="zoom-anim-dialog modal-block modal-block-lg modal-block-primary mfp-hide modal-mob-lg">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Atualizar</h2>
+        </header>
+        <div class="panel-body" id="modaleditarcampanha">
+
+            <!-- conteudo aqui -->
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success modal-atualizar" id="bteditarcampanha">Atualizar</button>
+                    <button class="btn btn-default modal-dismiss">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<!-- Modal Remover -->
+<div id="modalRemover" class="zoom-anim-dialog modal-block modal-block-danger mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Deletar</h2>
+        </header>
+        <div class="panel-body" id="modaldeletarcampanha"> </div>
+
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-danger modal-delete" id="btdeletarcampanha">Confirmar</button>
+                    <button class="btn btn-default modal-dismiss">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+

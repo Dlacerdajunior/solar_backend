@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aadbfd12a9ae4d0291afafc3f35df154" Name="Diagram1" ZoomLevel="53">
+        <EntityTypeShape EntityType="SolardbModel.adm_tipo" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.administrador" Width="1.5" PointX="13" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.ajuda" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.backgrounds" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.campanha_ativa" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.campanha_foto" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.campanha_loja" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.campanha_tipo" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.categoria_produto" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.checklist_codigo" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.checklist_equipamento" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.documentos" Width="1.5" PointX="14.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.equipamento_loja" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.equipamentos" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.faq" Width="1.5" PointX="11" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.gestao_campanha" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.grupos_faq" Width="1.5" PointX="8.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.listacompra_loja" Width="1.5" PointX="8.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.loja_status" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.pedido" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.produtos" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.solicitacao" Width="1.5" PointX="5.25" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.status_pedido" Width="1.5" PointX="6" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.uf" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.visita_chamado" Width="1.5" PointX="10.5" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.visita_fotos" Width="1.5" PointX="10.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SolardbModel.visita_status" Width="1.5" PointX="6" PointY="18" IsExpanded="true" />
+        <AssociationConnector Association="SolardbModel.FK__administr__adm_t__4B7734FF" ManuallyRouted="false" />
+        <AssociationConnector Association="SolardbModel.FK__gestao_ca__ativa__51300E55" ManuallyRouted="false" />
+        <AssociationConnector Association="SolardbModel.FK__campanha___id_ca__114A936A" ManuallyRouted="false" />
+        <AssociationConnector Association="SolardbModel.FK__loja_camp__id_ca__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="SolardbModel.FK__gestao_ca__id_ti__01142BA1" ManuallyRouted="false" />
+        <AssociationConnector Association="SolardbModel.FK__tabela_pr__categ__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="SolardbModel.FK__equipamen__id_eq__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="SolardbModel.FK__faq__faq_grupo__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="SolardbModel.FK__listacomp__id_ca__10566F31" ManuallyRouted="false" />
+        <AssociationConnector Association="SolardbModel.FK__pedido__id_statu__1A14E395" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SolardbModel.log_acesso" Width="1.5" PointX="6.625" PointY="20.875" />
+        <EntityTypeShape EntityType="SolardbModel.ciclo_robo" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SolardbModel.configuracao" Width="1.5" PointX="15.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SolardbModel.visita" Width="1.5" PointX="13.25" PointY="16.5" />
+        <AssociationConnector Association="SolardbModel.FK__visita__id_statu__1F98B2C1" />
+        <AssociationConnector Association="SolardbModel.FK__visita_ch__id_vi__282DF8C2" />
+        <AssociationConnector Association="SolardbModel.FK__visita_fo__id_vi__1AD3FDA4" />
+        <EntityTypeShape EntityType="SolardbModel.lojas" Width="1.5" PointX="3" PointY="10.125" />
+        <AssociationConnector Association="SolardbModel.FK__campanha___id_lo__45BE5BA9" />
+        <AssociationConnector Association="SolardbModel.FK__loja_camp__id_lo__05D8E0BE" />
+        <AssociationConnector Association="SolardbModel.FK__equipamen__id_lo__4D94879B" />
+        <AssociationConnector Association="SolardbModel.FK__listacomp__id_lo__0F624AF8" />
+        <AssociationConnector Association="SolardbModel.FK__log_acess__id_lo__02E7657A" />
+        <AssociationConnector Association="SolardbModel.FK__lojas__status_lo__6477ECF3" />
+        <AssociationConnector Association="SolardbModel.FK__mudarei__id_loja__5FB337D6" />
+        <AssociationConnector Association="SolardbModel.FK__pedido__id_loja__34C8D9D1" />
+        <AssociationConnector Association="SolardbModel.FK__visita__id_loja__160F4887" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

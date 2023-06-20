@@ -1,0 +1,196 @@
+﻿@model PagedList.IPagedList<SolarEP.Models.log_acesso>
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="@Url.Content("~/Content/assets/vendor/jquery/jquery.js")"></script>
+
+<script>
+    $(function () {
+        $(".bteditarrtfg").click(function () {
+
+            $("#modaleditarrtfg").load($(this).attr('href'));
+
+            $("#modaleditarrtfglink").trigger("click");
+
+            return false;
+        });
+
+        $("#btsubmit").click(function (data) {
+            $("form").attr("action", "Index");
+            datainicial = $("#datainicial").val()
+            datafinal = $("#datafinal").val()
+            if (datainicial != "" && datafinal == "") {
+                alert("É necessário preencher Data final");
+                return false;
+            }
+            if (datafinal != "" && datainicial == "") {
+                alert("É necessário preencher Data inicial");
+                return false;
+            }
+            else {
+                $("#formfiltro").submit();
+                return false;
+            }
+        });
+
+        $("#btsubmitexcel").click(function (data) {
+            $("form").attr("action", "RelatorioTrafego");
+            datainicial = $("#datainicial").val()
+            datafinal = $("#datafinal").val()
+            if (datainicial == "" && datafinal == "") {
+                alert("É necessário preencher uma data de início e fim.");
+                return false;
+            }
+            if (datainicial != "" && datafinal == "") {
+                alert("É necessário preencher Data final");
+                return false;
+            }
+            if (datafinal != "" && datainicial == "") {
+                alert("É necessário preencher Data inicial");
+                return false;
+            }
+            else {
+                $("#formfiltro").submit();
+                return false;
+            }
+        });
+
+        $('select').select2();
+    });
+</script>
+
+<style>
+    .select2-container {
+        width: 230px;
+        min-width: 230px;
+    }
+</style>
+
+<header class="page-header">
+    <h2>Relatório de Tráfego</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li><span>Relatório de Tráfego</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"></a>
+    </div>
+</header>
+
+<!-- start: page -->
+
+<form action="Index" method="get" id="formfiltro" class="form-horizontal">
+
+    <div class="form-group">
+        <div class="col-sm-3">
+            <label class="control-label">Data inicial</label>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+                <input id="datainicial" name="datainicial" type="text" data-plugin-datepicker="" data-date-format="dd/mm/yyyy" class="form-control valid">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <label class="control-label">Data final</label>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+                <input id="datafinal" name="datafinal" type="text" data-plugin-datepicker="" data-date-format="dd/mm/yyyy" class="form-control valid">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <label class="control-label">Tela</label>
+            <br />
+            @Html.DropDownList("telalog", String.Empty)
+        </div>
+        <div class="col-sm-3">
+            <label class="control-label">Loja</label>
+            <br />
+            @Html.DropDownList("id_loja", String.Empty)
+        </div>
+    </div>
+
+    <div class="panel">
+        <input value="Filtrar" id="btsubmit" type="submit" class="btn btn-default" />
+        <input value="Excel" id="btsubmitexcel" type="submit" class="btn btn-success" />
+    </div>
+</form>
+
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel">
+            <header class="panel-heading">
+
+                <div class="panel-actions">
+                    <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                </div>
+
+                <h2 class="panel-title">Relatório de Tráfego (@ViewBag.qtd)</h2>
+
+            </header>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table mb-none">
+                        <thead>
+                            <tr>
+                                <th width="10%">ID Loja</th>
+                                <th width="30%">Razão Social Loja</th>
+                                <th width="40%">Tela</th>
+                                <th width="20%">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td> @Html.DisplayFor(modelItem => item.lojas.id)</td>
+                                    <td> @Html.DisplayFor(modelItem => item.lojas.razao_social_loja)</td>
+                                    <td> @Html.DisplayFor(modelItem => item.tela)</td>
+                                    <td> @Html.DisplayFor(modelItem => item.datalog)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            Página @Model.PageNumber de @Model.PageCount
+            @Html.PagedListPager(Model, Page => Url.Action("Index", new { pagina = Page, datainicial = Request.QueryString["datainicial"], datafinal = Request.QueryString["datafinal"], telalog = Request.QueryString["telalog"], id_loja = Request.QueryString["id_loja"] }))
+        </section>
+    </div>
+</div>
+
+<!-- Modal atualizar -->
+<div id="modalAdd" class="zoom-anim-dialog modal-block modal-block-lg modal-block-primary mfp-hide modal-mob-lg">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Atualizar</h2>
+        </header>
+        <div class="panel-body" id="modaleditarrtfg">
+
+            <!-- conteudo aqui -->
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success modal-atualizar" id="bteditarrtfg">Atualizar</button>
+                    <button class="btn btn-default modal-dismiss">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>

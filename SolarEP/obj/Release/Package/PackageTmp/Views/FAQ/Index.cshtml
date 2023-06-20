@@ -1,0 +1,230 @@
+﻿@model PagedList.IPagedList<SolarEP.Models.faq>
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="@Url.Content("~/Content/assets/vendor/jquery/jquery.js")"></script>
+<link rel="stylesheet" href="@Url.Content("~/Content/farbtastic/farbtastic.css")" type="text/css" /> 
+
+<script>
+    $(function () {
+        // your code goes here
+
+        $(".btadicionarf4q").click(function () {
+
+            $("#modaladicionarf4q").load($(this).attr('href'));
+
+            $("#modaladicionarf4qlink").trigger("click");
+
+            return false;
+
+        });
+
+        $(".bteditarf4q").click(function () {
+
+            $("#modaleditarf4q").load($(this).attr('href'));
+
+            $("#modaleditarf4qlink").trigger("click");
+
+            return false;
+
+        });
+
+        $(".btdeletarf4qlink").click(function () {
+
+            $("#modaldeletarf4q").load($(this).attr('href'));
+
+            $("#modaldeletarlink").trigger("click");
+
+            return false;
+
+        });
+
+
+        $("#btdeletarf4q").click(function () {
+
+            $("#formdeletarf4q").submit();
+
+        });
+
+    });
+
+</script>
+
+<header class="page-header">
+    <h2>Perguntas Frequentes</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li><span>Perguntas Frequentes</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"></a>
+    </div>
+</header>
+
+<form action="" method="get" class="form-horizontal">
+    <div class="form-group">
+        <div class="col-sm-4">
+        <label class="control-label">Perguntas</label>
+            <input id="perguntas" name="perguntas" type="text" class="form-control valid">
+        </div>
+        <div class="col-sm-4">
+        <label class="control-label">Respostas</label>
+            <input id="respostas" name="respostas" type="text" class="form-control valid">
+        </div>
+        <div class="col-sm-4">
+            <label class="control-label">Grupos</label>
+            <br />
+            @Html.DropDownList("faq_grupo", String.Empty)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-4">
+        <label class="control-label">Atualização</label>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+                <input id="atualizacao" name="atualizacao" type="text" data-plugin-datepicker="" data-date-format="dd/mm/yyyy" class="form-control valid">
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <input value="Filtrar" id="btsubmit" type="submit" class="btn btn-default" />
+    </div>
+</form>
+
+<!-- start: page -->
+
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="panel-actions">
+
+                    <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                    <a href="@Url.Content("~/FAQ/Create")" class="btadicionarf4q panel-action"><i class="fa fa-plus"></i></a>
+                    <a href="#modalAnim" id="modaladicionarf4qlink" class="panel-action fa fa-plus modal-with-zoom-anim" style="display:none;"><i class="fa fa-plus"></i></a>
+
+                </div>
+
+                <h2 class="panel-title">Perguntas Frequentes (@ViewBag.qtd)</h2>
+            </header>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table mb-none">
+                        <thead>
+                            <tr>
+                                <th width="20%">Grupo</th> <!-- varchar -->
+                                <th width="20%">Perguntas</th> <!-- datetime -->
+                                <th width="40%">Respostas</th>
+                                <th width="10%">Atualização</th>
+                                <th width="10%">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.grupos_faq.grupo_faq)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.faq_pergunta)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.faq_resposta)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.ultima_atualizacao)</td>
+                                    <td class="actions">
+                                        <a href="@Url.Content("~/FAQ/edit/"+item.id)" class="bteditarf4q panel-action"><i class="fa fa-pencil"></i></a>
+
+                                        <a href="#modalAdd" id="modaleditarf4qlink" class="panel-action modal-with-zoom-anim" style="display:none;"><i class="fa fa-pencil"></i></a>
+
+                                        <a href="@Url.Content("~/FAQ/delete/"+item.id)" class="btdeletarf4qlink "><i class="fa fa-trash-o"></i></a>
+
+                                        <a href="#modalRemover" id="modaldeletarlink" class="delete-row modal-with-zoom-anim" style="display:none;"><i class="fa fa-trash-o"></i></a>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            Página @Model.PageNumber de @Model.PageCount
+            @Html.PagedListPager(Model, Page => Url.Action("Index", new { pagina = Page, perguntas = Request.QueryString["perguntas"], respostas = Request.QueryString["respostas"], faq_grupo = Request.QueryString["faq_grupo"], atualizacao = Request.QueryString["atualizacao"] }))
+        </section>
+    </div>
+</div>
+
+
+<!-- Modal atualizar -->
+<div id="modalAdd" class="zoom-anim-dialog modal-block modal-block-primary mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Atualizar</h2>
+        </header>
+        <div class="panel-body" id="modaleditarf4q">
+            <!-- conteudo aqui -->
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success modal-atualizar" id="bteditarf4q">Atualizar</button>
+                    <button class="btn btn-default modal-dismiss">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<!-- Modal Adicionar -->
+<div id="modalAnim" class="zoom-anim-dialog modal-block modal-block-primary mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Adicionar</h2>
+        </header>
+        <div class="panel-body" id="modaladicionarf4q">
+            <!-- conteudo aqui -->
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success modal-confirm" id=btadicionarf4q>Adicionar</button>
+                    <button class="btn btn-default modal-dismiss">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<!-- Modal Remover -->
+<div id="modalRemover" class="zoom-anim-dialog modal-block modal-block-danger mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Deletar</h2>
+        </header>
+        <div class="panel-body" id="modaldeletarf4q">
+            <!-- conteudo aqui -->
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-danger modal-delete" id="btdeletarf4q">Confirmar</button>
+                    <button class="btn btn-default modal-dismiss">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+
+

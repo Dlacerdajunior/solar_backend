@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://192.168.1.76/wsRelacionamentoCliente.asmx" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://192.168.1.76/wsRelacionamentoCliente.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://192.168.1.76/wsRelacionamentoCliente.asmx">
+      <s:element name="ObterCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObterClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObterClienteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObterEquipamentos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strChave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObterEquipamentosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObterEquipamentosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ObterClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ObterCliente" />
+  </wsdl:message>
+  <wsdl:message name="ObterClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ObterClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObterEquipamentosSoapIn">
+    <wsdl:part name="parameters" element="tns:ObterEquipamentos" />
+  </wsdl:message>
+  <wsdl:message name="ObterEquipamentosSoapOut">
+    <wsdl:part name="parameters" element="tns:ObterEquipamentosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObterClienteHttpGetIn">
+    <wsdl:part name="strChave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ObterClienteHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="ObterEquipamentosHttpGetIn">
+    <wsdl:part name="strChave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ObterEquipamentosHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="ObterClienteHttpPostIn">
+    <wsdl:part name="strChave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ObterClienteHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="ObterEquipamentosHttpPostIn">
+    <wsdl:part name="strChave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ObterEquipamentosHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:portType name="wsRelacionamentoClienteSoap">
+    <wsdl:operation name="ObterCliente">
+      <wsdl:input message="tns:ObterClienteSoapIn" />
+      <wsdl:output message="tns:ObterClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterEquipamentos">
+      <wsdl:input message="tns:ObterEquipamentosSoapIn" />
+      <wsdl:output message="tns:ObterEquipamentosSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsRelacionamentoClienteHttpGet">
+    <wsdl:operation name="ObterCliente">
+      <wsdl:input message="tns:ObterClienteHttpGetIn" />
+      <wsdl:output message="tns:ObterClienteHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterEquipamentos">
+      <wsdl:input message="tns:ObterEquipamentosHttpGetIn" />
+      <wsdl:output message="tns:ObterEquipamentosHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsRelacionamentoClienteHttpPost">
+    <wsdl:operation name="ObterCliente">
+      <wsdl:input message="tns:ObterClienteHttpPostIn" />
+      <wsdl:output message="tns:ObterClienteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterEquipamentos">
+      <wsdl:input message="tns:ObterEquipamentosHttpPostIn" />
+      <wsdl:output message="tns:ObterEquipamentosHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsRelacionamentoClienteSoap" type="tns:wsRelacionamentoClienteSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObterCliente">
+      <soap:operation soapAction="http://192.168.1.76/wsRelacionamentoCliente.asmx/ObterCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObterEquipamentos">
+      <soap:operation soapAction="http://192.168.1.76/wsRelacionamentoCliente.asmx/ObterEquipamentos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsRelacionamentoClienteSoap12" type="tns:wsRelacionamentoClienteSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObterCliente">
+      <soap12:operation soapAction="http://192.168.1.76/wsRelacionamentoCliente.asmx/ObterCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObterEquipamentos">
+      <soap12:operation soapAction="http://192.168.1.76/wsRelacionamentoCliente.asmx/ObterEquipamentos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsRelacionamentoClienteHttpGet" type="tns:wsRelacionamentoClienteHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ObterCliente">
+      <http:operation location="/ObterCliente" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObterEquipamentos">
+      <http:operation location="/ObterEquipamentos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsRelacionamentoClienteHttpPost" type="tns:wsRelacionamentoClienteHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="ObterCliente">
+      <http:operation location="/ObterCliente" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObterEquipamentos">
+      <http:operation location="/ObterEquipamentos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsRelacionamentoCliente">
+    <wsdl:port name="wsRelacionamentoClienteSoap" binding="tns:wsRelacionamentoClienteSoap">
+      <soap:address location="http://wsrelacionamentocliente.solarbr.com.br/wsRelacionamentoCliente.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsRelacionamentoClienteSoap12" binding="tns:wsRelacionamentoClienteSoap12">
+      <soap12:address location="http://wsrelacionamentocliente.solarbr.com.br/wsRelacionamentoCliente.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsRelacionamentoClienteHttpGet" binding="tns:wsRelacionamentoClienteHttpGet">
+      <http:address location="http://wsrelacionamentocliente.solarbr.com.br/wsRelacionamentoCliente.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsRelacionamentoClienteHttpPost" binding="tns:wsRelacionamentoClienteHttpPost">
+      <http:address location="http://wsrelacionamentocliente.solarbr.com.br/wsRelacionamentoCliente.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

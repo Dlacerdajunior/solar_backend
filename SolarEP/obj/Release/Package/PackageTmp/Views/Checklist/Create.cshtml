@@ -1,0 +1,53 @@
+﻿@model SolarEP.Models.checklist_equipamento
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAjax.cshtml";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formadicionarcheck" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+
+    <script>
+        $(function () {
+            // your code goes here
+            $("#btadicionarcheck").click(function () {
+                texto = $("#texto").val()
+                if (texto == "") {
+                    alert("É necessário preencher um Checklist");
+                    return false;
+                }
+                else {
+                    $("#formadicionarcheck").submit();
+                }
+            });
+        });
+    </script>
+    
+<style>
+    .select2 {
+        width: 230px;
+        min-width: 230px;
+    }
+</style>
+    
+    
+    <div class="form-group">
+        <label class="col-md-4 control-label">Código do equipamento(EQFNR)</label>
+        <div class="col-sm-6">
+            @Html.DropDownList("codigo", String.Empty)
+        </div>
+    </div>
+   
+    <div class="form-group">
+        @Html.LabelFor(model => model.texto, "Checklist", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.texto, new { @class = "form-control", placeholder = "Checklist" })
+            @Html.ValidationMessageFor(model => model.texto)
+        </div>
+    </div>
+}
+

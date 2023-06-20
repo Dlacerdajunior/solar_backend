@@ -1,0 +1,100 @@
+﻿@model SolarEP.Models.administrador
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAjax.cshtml";
+}
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formadicionaradm" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <script>
+
+        jQuery(function ($) {
+            $('#codigo').mask('00000000');
+        });
+
+    </script>
+
+    
+<script>
+    $(function () {
+        // your code goes here
+        $("#btadicionaradm").click(function (data) {
+            nome = $("#nome").val()
+            email = $("#email").val()
+            adm_tipo = $("#adm_tipo").val()
+            if (nome == "" || email == "" || adm_tipo == "") {
+                alert("É necessário preencher os campos abaixo");
+                return false;
+            }
+            senha = $("#senha").val()
+            confsenha = $("#confsenha").val()
+            if (senha == "" || confsenha == "") {
+                alert("Campo Senha não pode ser vazio");
+                return false;
+            }
+            if (senha != confsenha) {
+                alert("Senha não confere");
+                return false;
+            }
+            else {
+               if (true) {
+                   $.post('/Administrador/verificaigual', { email: email }, function (data) {
+                        if (data == "False") {
+                            alert("E-mail já existente no sistema.");
+                            return false;
+                        }
+                        else {
+                            $("#formadicionaradm").submit();
+                            return false;
+                            }                        
+                        });
+                    return false;
+                    } 
+                }
+            });
+        });
+</script>
+    
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.nome, "Nome *", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.nome, new { @class = "form-control", placeholder = "Nome" })
+            @Html.ValidationMessageFor(model => model.nome)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.adm_tipo, "Tipo *", new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.DropDownList("adm_tipo", String.Empty)
+            @Html.ValidationMessageFor(model => model.adm_tipo)
+        </div>
+        @Html.LabelFor(model => model.email, "E-mail *", new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.email, new { @class = "form-control", placeholder = "E-mail" })
+            @Html.ValidationMessageFor(model => model.email)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.senha, "Senha *", new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.PasswordFor(model => model.senha, new { @class = "form-control", placeholder = "Senha" })
+            @Html.ValidationMessageFor(model => model.senha)
+        </div>
+        <label for="" class="col-md-2 control-label">Confirmar Senha *</label>
+        <div class="col-md-4">
+            <input type="password" class="form-control" id="confsenha" required="" placeholder="Confirmar Senha">
+        </div>
+    </div>
+    
+
+   
+}
+

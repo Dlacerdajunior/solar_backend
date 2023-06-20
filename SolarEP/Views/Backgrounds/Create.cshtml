@@ -1,0 +1,31 @@
+﻿@model SolarEP.Models.backgrounds
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAjax.cshtml";    
+}
+
+@using (Html.BeginForm("Create", "Backgrounds", FormMethod.Post, new { enctype = "multipart/form-data", id = "formadicionarbg" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <script>
+        $(function () {
+            // your code goes here
+            $("#btadicionarbg").click(function () {
+
+                $("#formadicionarbg").submit();
+            });
+        });
+
+    </script>
+
+    <div class="form-group">
+        @Html.Label("Upload Background", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="urlback" />
+        </div>
+    </div>
+}
+

@@ -1,0 +1,157 @@
+﻿@model SolarEP.Models.lojas
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAjax.cshtml";
+}
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formadicionarloja" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true)
+
+    <script>
+
+        jQuery(function ($) {
+            $('#cnpj_loja').mask('00000000000000');
+        });
+
+    </script>
+
+    <script>
+        $(function () {
+
+            var files = [];
+
+            $("#inpuploadfoto").change(function (event) {
+
+                $.each(event.target.files, function (index, file) {
+                    var reader = new FileReader();
+                    reader.onload = function (event) {
+                        object = {};
+                        //object.filename = file.name;
+                        $(".fotobase64 ").val(event.target.result);
+                        $(".imgpeca").attr('src', event.target.result)
+                        $(".pull-right").removeClass("hidden")
+                        //object.data = event.target.result;
+                        //files.push(object);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            });
+
+            // your code goes here
+            $("#btadicionarloja").click(function () {
+                cnpj_loja = $("#cnpj_loja").val()
+                razao_social_loja = $("#razao_social_loja").val()
+                if (cnpj_loja == "" || razao_social_loja == "") {
+                    alert("É necessário preencher os campos marcados com *");
+                    return false;
+                }
+                senha = $("#senha").val()
+                confsenha = $("#confsenha").val()
+                if (senha == "" && confsenha == "") {
+                    alert("Campo Senha não pode ser vazio");
+                    return false;
+                }
+                if (senha != confsenha) {
+                    alert("Senha não confere");
+                    return false;
+                }
+                else {
+                    $("#formadicionarloja").submit();
+                }
+            });
+        });
+    </script>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.cnpj_loja, "CPF/CNPJ*", new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.cnpj_loja, new { @class = "form-control", placeholder = "CPF/CNPJ" })
+            @Html.ValidationMessageFor(model => model.cnpj_loja)
+        </div>
+        @Html.LabelFor(model => model.razao_social_loja, "Razão Social*", new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.razao_social_loja, new { @class = "form-control", MaxLength = "30", placeholder = "Razão Social" })
+            @Html.ValidationMessageFor(model => model.razao_social_loja)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.loja_ativa, "Loja Ativa", new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.loja_ativa, new { @class = "form-control", MaxLength = "30", placeholder = "Loja Ativa" })
+            @Html.ValidationMessageFor(model => model.loja_ativa)
+        </div>
+        @Html.LabelFor(model => model.email_contato, "E-mail", new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.email_contato, new { @class = "form-control", MaxLength = "30", placeholder = "E-mail" })
+            @Html.ValidationMessageFor(model => model.email_contato)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.nome_contato, "Nome Contato", new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.nome_contato, new { @class = "form-control", MaxLength = "20", placeholder = "Nome Contato" })
+            @Html.ValidationMessageFor(model => model.nome_contato)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.senha, "Senha *", new { @class = "col-md-2 control-label" })
+        <div class="col-md-4">
+            @Html.PasswordFor(model => model.senha, new { @class = "form-control", placeholder = "Senha" })
+            @Html.ValidationMessageFor(model => model.senha)
+        </div>
+        <label for="" class="col-md-2 control-label">Confirmar Senha *</label>
+        <div class="col-md-4">
+            <input type="password" class="form-control" id="confsenha" required="" placeholder="Confirmar Senha">
+        </div>
+    </div>
+
+    <div class="pull-right hidden">
+        <div class="popup-gallery">
+            <div class="pull-left mb-xs mr-xs thumbnail">
+                <div class="img-responsive">
+                    <img src="" class="imgpeca" alt="" width="200">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group hidden">
+        @Html.LabelFor(model => model.lattext, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.lattext)
+            @Html.ValidationMessageFor(model => model.lattext)
+        </div>
+    </div>
+
+    <div class="form-group hidden">
+        @Html.LabelFor(model => model.longtext, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.longtext)
+            @Html.ValidationMessageFor(model => model.longtext)
+        </div>
+    </div>
+
+    <div class="form-group hidden">
+        @Html.LabelFor(model => model.status_loja, "status_loja", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("status_loja", String.Empty)
+            @Html.ValidationMessageFor(model => model.status_loja)
+        </div>
+    </div>
+
+    <div class="form-group hidden">
+        @Html.LabelFor(model => model.email_codigo, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.email_codigo)
+            @Html.ValidationMessageFor(model => model.email_codigo)
+        </div>
+    </div>
+}

@@ -1,0 +1,51 @@
+﻿@model SolarEP.Models.checklist_codigo
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAjax.cshtml";
+}
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formadicionarcheckequip" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+<script>
+    $(function () {
+        // your code goes here
+        $("#btadicionarcheckequip").click(function (data) {
+            codigo = $("#codigo").val()
+            if (codigo == "") {
+                alert("É necessário preencher um Código.");
+                return false;
+            }
+            else {
+               if (true) {
+                   $.post('/ChecklistEquipamento/verificaigual', { codigo: codigo }, function (data) {
+                        if (data == "False") {
+                            alert("Código já existente no sistema.");
+                            return false;
+                        }
+                        else {
+                            $("#formadicionarcheckequip").submit();
+                            return false;
+                            }                        
+                        });
+                    return false;
+                    } 
+                }            
+            });
+        });
+</script>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.codigo, "Código (EQFNR)", new { @class = "col-md-3 control-label" })
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.codigo, new { @class = "form-control", placeholder = "Código", MaxLength = "30" })
+            @Html.ValidationMessageFor(model => model.codigo)
+        </div>
+    </div>
+
+}
+

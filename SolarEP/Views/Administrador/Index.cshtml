@@ -1,0 +1,206 @@
+﻿@model PagedList.IPagedList<SolarEP.Models.administrador>
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="@Url.Content("~/Content/assets/vendor/jquery/jquery.js")"></script>
+
+<script>
+    $(function () {
+        // your code goes here
+
+        $(".btadicionaradm").click(function () {
+
+            $("#modaladicionaradm").load($(this).attr('href'));
+
+            $("#modaladicionaradmlink").trigger("click");
+
+            return false;
+
+        });
+
+        $(".bteditaradm").click(function () {
+
+            $("#modaleditaradm").load($(this).attr('href'));
+
+            $("#modaleditaradmlink").trigger("click");
+
+            return false;
+
+        });
+
+        $(".btdeletaradmlink").click(function () {
+
+            $("#modaldeletaradm").load($(this).attr('href'));
+
+            $("#modaldeletarlink").trigger("click");
+
+            return false;
+
+        });
+
+
+        $("#btdeletaradm").click(function () {
+
+            $("#formdeletaradm").submit();
+
+        });
+
+    });
+
+</script>
+
+<header class="page-header">
+    <h2>Administrador</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li><span>Administrador</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"></a>
+    </div>
+</header>
+
+<!-- start: page -->
+
+<form action="" method="post" class="form-horizontal">
+    <div class="form-group">
+        <div class="col-sm-4">
+            <label class="control-label">Nome</label>
+            <input id="nome" name="nome" type="text" class="form-control valid">
+        </div>
+        <div class="col-sm-4">
+            <label class="control-label">E-mail</label>
+            <input id="email" name="email" type="text" class="form-control valid">
+        </div>
+    </div>
+
+    <div class="panel">
+        <input value="Filtrar" id="btsubmit" type="submit" class="btn btn-default" />
+    </div>
+</form>
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel">
+            <header class="panel-heading">
+
+
+                    <div class="panel-actions">
+                        <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                        <a href="@Url.Content("~/Administrador/Create")" class="btadicionaradm panel-action"><i class="fa fa-plus"></i></a>
+                        <a href="#modalAnim" id="modaladicionaradmlink" class="panel-action fa fa-plus modal-with-zoom-anim" style="display:none;"><i class="fa fa-plus"></i></a>
+                    </div>
+
+                    <h2 class="panel-title">Administrador (@ViewBag.qtd)</h2>
+
+            </header>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table mb-none">
+                        <thead>
+                            <tr>
+                                <th width="50%">Nome</th>
+                                <th width="40%">E-mail</th>
+                                <th width="10%">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td> @Html.DisplayFor(modelItem => item.nome)</td>
+                                    <td> @Html.DisplayFor(modelItem => item.email)</td>
+
+                                    <td class="actions">
+
+                                        <a href="@Url.Content("~/Administrador/edit/"+item.id)" class="bteditaradm panel-action"><i class="fa fa-pencil"></i></a>
+
+                                        <a href="#modalAdd" id="modaleditaradmlink" class="panel-action modal-with-zoom-anim" style="display:none;"><i class="fa fa-pencil"></i></a>
+
+                                        <a href="@Url.Content("~/Administrador/delete/"+item.id)" class="btdeletaradmlink "><i class="fa fa-trash-o"></i></a>
+
+                                        <a href="#modalRemover" id="modaldeletarlink" class="delete-row modal-with-zoom-anim" style="display:none;"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            Página @Model.PageNumber de @Model.PageCount
+            @Html.PagedListPager(Model, Page => Url.Action("Index", new { pagina = Page }))
+        </section>
+    </div>
+</div>
+
+<!-- Modal atualizar -->
+<div id="modalAdd" class="zoom-anim-dialog modal-block modal-block-lg modal-block-primary mfp-hide modal-mob-lg">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Atualizar</h2>
+        </header>
+        <div class="panel-body" id="modaleditaradm">
+
+            <!-- conteudo aqui -->
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success modal-atualizar" id="bteditaradm">Atualizar</button>
+                    <button class="btn btn-default modal-dismiss">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<!-- Modal Adicionar -->
+<div id="modalAnim" class="zoom-anim-dialog modal-block modal-block-lg modal-block-primary mfp-hide modal-mob-lg">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Adicionar</h2>
+        </header>
+        <div class="panel-body" id="modaladicionaradm">
+            <!-- conteudo aqui -->
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success modal-confirm" id="btadicionaradm">Adicionar</button>
+                    <button class="btn btn-default modal-dismiss" id="btadicionarcancelaradm">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<!-- Modal Remover -->
+<div id="modalRemover" class="zoom-anim-dialog modal-block modal-block-danger mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Deletar</h2>
+        </header>
+        <div class="panel-body" id="modaldeletaradm"> </div>
+
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-danger modal-delete" id="btdeletaradm">Confirmar</button>
+                    <button class="btn btn-default modal-dismiss">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>

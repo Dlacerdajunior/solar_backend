@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://wsrelacionamentocliente.solarbr.com.br/wsRelacionamentoCliente.asmx?wsdl" docRef="http://wsrelacionamentocliente.solarbr.com.br/wsRelacionamentoCliente.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://wsrelacionamentocliente.solarbr.com.br/wsRelacionamentoCliente.asmx" xmlns:q1="http://192.168.1.76/wsRelacionamentoCliente.asmx" binding="q1:wsRelacionamentoClienteSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://wsrelacionamentocliente.solarbr.com.br/wsRelacionamentoCliente.asmx" xmlns:q2="http://192.168.1.76/wsRelacionamentoCliente.asmx" binding="q2:wsRelacionamentoClienteSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

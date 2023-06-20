@@ -1,0 +1,638 @@
+﻿@model SolarEP.Models.gestao_campanha
+
+@{
+    ViewBag.Title = "EditMaterial";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="@Url.Content("~/Content/assets/vendor/jquery/jquery.js")"></script>
+<link rel="stylesheet" href="@Url.Content("~/Content/build.css")" />
+<script>
+    $(function () {
+
+        $('#blocoarq').hide()
+
+        $('#blocoimagem').hide()
+        $('#blocoimagem2').hide()
+        $('#blocoimagem3').hide()
+        $('#blocoimagem4').hide()
+        $('#blocoimagem5').hide()
+        $('#blocoimagem6').hide()
+        $('#blocoimagem7').hide()
+        $('#blocoimagem8').hide()
+
+        $('#checkimg').change(function () {
+            if ($(this).is(':checked')) {
+
+                $('#blocoimagem').show()
+                $('#blocoimagem2').show()
+                $('#blocoimagem3').show()
+                $('#blocoimagem4').show()
+                $('#blocoimagem5').show()
+                $('#blocoimagem6').show()
+                $('#blocoimagem7').show()
+                $('#blocoimagem8').show()
+            } else {
+
+                $('#blocoimagem').hide()
+                $('#blocoimagem2').hide()
+                $('#blocoimagem3').hide()
+                $('#blocoimagem4').hide()
+                $('#blocoimagem5').hide()
+                $('#blocoimagem6').hide()
+                $('#blocoimagem7').hide()
+                $('#blocoimagem8').hide()
+            }
+        });
+
+        $('#checkarq').change(function () {
+            if ($(this).is(':checked')) {
+                $('#blocoarq').show()
+
+            } else {
+                $('#blocoarq').hide()
+
+            }
+        });
+
+        var _URL = window.URL || window.webkitURL;
+
+        $("#ldpi").change(function () {
+            var file, img;
+
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    if (this.width != 320 || this.height != 426) {
+                        alert("Dimensões LDPI incorretas!");
+                        $("#ldpi").val("");
+                        return false;
+                    }
+                };
+                img.onerror = function () {
+                    alert("Android LDPI - 320x426px é necessário ser JPG ou PNG");
+                    $("#ldpi").val("");
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+        });
+
+        $("#mdpi").change(function () {
+            var file, img;
+
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    if (this.width != 320 || this.height != 470) {
+                        alert("Dimensões MDPI incorretas!");
+                        $("#mdpi").val("");
+                        return false;
+                    }
+                };
+                img.onerror = function () {
+                    alert("Android MDPI - 320x470px é necessário ser JPG ou PNG");
+                    $("#mdpi").val("");
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+        });
+
+        $("#hdpi").change(function () {
+            var file, img;
+
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    if (this.width != 480 || this.height != 640) {
+                        alert("Dimensões HDPI incorretas!");
+                        $("#hdpi").val("");
+                        return false;
+                    }
+                };
+                img.onerror = function () {
+                    alert("Android HDPI - 480x640px é necessário ser JPG ou PNG");
+                    $("#hdpi").val("");
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+        });
+
+        $("#xhdpi").change(function () {
+            var file, img;
+
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    if (this.width != 720 || this.height != 960) {
+                        alert("Dimensões XHDPI incorretas!");
+                        $("#xhdpi").val("");
+                        return false;
+                    }
+                };
+                img.onerror = function () {
+                    alert("Android XHDPI - 720x960px é necessário ser JPG ou PNG");
+                    $("#xhdpi").val("");
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+        });
+
+        $("#iphone4").change(function () {
+            var file, img;
+
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    if (this.width != 640 || this.height != 960) {
+                        alert("Dimensões iPhone 4 incorretas!");
+                        $("#iphone4").val("");
+                        return false;
+                    }
+                };
+                img.onerror = function () {
+                    alert("iPhone 4 - 640x960px é necessário ser JPG ou PNG");
+                    $("#iphone4").val("");
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+        });
+
+        $("#iphone5").change(function () {
+            var file, img;
+
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    if (this.width != 640 || this.height != 1136) {
+                        alert("Dimensões iPhone 5 incorretas!");
+                        $("#iphone5").val("");
+                        return false;
+                    }
+                };
+                img.onerror = function () {
+                    alert("iPhone 5 - 640x1136px é necessário ser JPG ou PNG");
+                    $("#iphone5").val("");
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+        });
+
+        $("#iphone6").change(function () {
+            var file, img;
+
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    if (this.width != 750 || this.height != 1334) {
+                        alert("Dimensões iPhone 6 incorretas!");
+                        $("#iphone6").val("");
+                        return false;
+                    }
+                };
+                img.onerror = function () {
+                    alert("iPhone 6 - 750x1334px é necessário ser JPG ou PNG");
+                    $("#iphone6").val("");
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+        });
+
+        $("#iphone6plus").change(function () {
+            var file, img;
+
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    if (this.width != 1242 || this.height != 2208) {
+                        alert("Dimensões iPhone 6 Plus incorretas!");
+                        $("#iphone6plus").val("");
+                        return false;
+                    }
+                };
+                img.onerror = function () {
+                    alert("iPhone 6 Plus - 1242x2208px é necessário ser JPG ou PNG");
+                    $("#iphone6plus").val("");
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+        });
+
+        $("#coverimage").change(function () {
+            var file, img;
+
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    if (this.width != 658 || this.height != 265) {
+                        alert("Dimensões Cover Image incorretas!");
+                        $("#coverimage").val("");
+                        return false;
+                    }
+                };
+                img.onerror = function () {
+                    alert("Cover Image - 658x265px é necessário ser JPG ou PNG");
+                    $("#coverimage").val("");
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+        });
+
+        $("#icon_image").change(function () {
+            var file, img;
+
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    if (this.width != 147 || this.height != 147) {
+                        alert("Dimensões Icon Image incorretas!");
+                        $("#icon_image").val("");
+                        return false;
+                    }
+                };
+                img.onerror = function () {
+                    alert("Icon Image - 147x147px é necessário ser PNG");
+                    $("#icon_image").val("");
+                };
+                img.src = _URL.createObjectURL(file);
+            }
+        });
+
+        // your code goes here
+        $('#btneditarmaterial').click(function () {
+            titulo = $("#titulo").val()
+            descricao_curta = $("#descricao_curta").val()
+            ativa = $("#ativa").val()
+            descricao = $("#descricao").val()
+          //  coverimage = $("#coverimage").val()
+          //  icon_image = $("#icon_image").val()
+
+            if (titulo == "") {
+                alert("É necessário preencher título");
+                return false;
+            }
+            else if (descricao_curta == "") {
+                alert("É necessário preencher uma descrição curta");
+                return false;
+            }
+            else if (descricao == "") {
+                alert("É necessário preencher uma descrição");
+                return false;
+            }
+        /*    else if (coverimage == "") {
+                alert("É necessário realizar o Upload Cover Image");
+                return false;
+            }
+            else if (icon_image == "") {
+                alert("É necessário realizar o Upload Icon Image");
+                return false;
+            } */
+            else if (ativa == "") {
+                alert("É necessário preencher Ativada/Desativada");
+                return false;
+            }
+            else {
+                $("#formeditarmaterial").submit();
+            }
+        });
+    });
+
+</script>
+
+
+<header class="page-header">
+    <h2>Editar Material Promocional</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li><span>Editar Material Promocional</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"></a>
+    </div>
+</header>
+
+@using (Html.BeginForm("EditMaterial", "Campanhas", FormMethod.Post, new { enctype = "multipart/form-data", @id = "formeditarmaterial" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                    </div>
+
+                    <h2 class="panel-title">Editar Material Promocional</h2>
+                </header>
+                <div class="panel-body">
+
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(model => model.id)
+                    @Html.HiddenFor(model => model.id_tipocampanha)
+                    @Html.HiddenFor(model => model.url_foto)
+                    @Html.HiddenFor(model => model.url_arquivo)
+                    @Html.HiddenFor(model => model.url_ldpi)
+                    @Html.HiddenFor(model => model.url_mdpi)
+                    @Html.HiddenFor(model => model.url_hdpi)
+                    @Html.HiddenFor(model => model.url_xhdpi)
+                    @Html.HiddenFor(model => model.iphone4)
+                    @Html.HiddenFor(model => model.iphone5)
+                    @Html.HiddenFor(model => model.iphone6)
+                    @Html.HiddenFor(model => model.iphone6plus)
+                    @Html.HiddenFor(model => model.icon_image)
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.titulo, "Título", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.titulo, new { @class = "form-control", placeholder = "Título", MaxLength = "50" })
+                            @Html.ValidationMessageFor(model => model.titulo)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.descricao_curta, "Descrição Curta", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.descricao_curta, new { @class = "form-control", placeholder = "Descrição Curta", MaxLength = "255" })
+                            @Html.ValidationMessageFor(model => model.descricao_curta)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.descricao, "Descrição", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.descricao, new { @class = "form-control", placeholder = "Descrição" })
+                            @Html.ValidationMessageFor(model => model.descricao)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.link, "URL (Necessário inserir: http:// ou https://)", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.link, new { @class = "form-control", placeholder = "URL" })
+                            @Html.ValidationMessageFor(model => model.link)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.link_nome, "Nome URL", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.link_nome, new { @class = "form-control", placeholder = "Nome URL", MaxLength = "255" })
+                            @Html.ValidationMessageFor(model => model.link_nome)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Upload Cover Image - 658x265px (PNG ou JPG)", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" name="coverimage" id="coverimage" />
+                        </div>
+                        @if (Model.url_foto != null)
+                        {
+                            <div class="col-md-10">
+                                <div class="img-responsive">
+                                    <img src="@Model.url_foto" class="" alt="" width="450">
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Upload Icon Image - 147x147px (PNG)", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" name="icon_image" id="icon_image" />
+                        </div>
+
+                        @if (Model.icon_image != null)
+                        {
+                            <div class="col-md-10">
+                                <div class="img-responsive">
+                                    <img src="@Model.icon_image" class="" alt="" width="100">
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ativa, "Ativar/Desativar", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ativa", String.Empty)
+                            @Html.ValidationMessageFor(model => model.ativa)
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    <div class="panel-actions">
+                                        <div class="col-sm-6">
+                                            <div class="mb-md">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h2 class="panel-title">Redes Sociais</h2>
+                                </header>
+                                <br />
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.url_youtube, "Youtube URL", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.url_youtube, new { @class = "form-control", placeholder = "Youtube URL", MaxLength = "255" })
+                                        @Html.ValidationMessageFor(model => model.url_youtube)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.url_facebok, "Facebook URL", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.url_facebok, new { @class = "form-control", placeholder = "Facebook URL", MaxLength = "255" })
+                                        @Html.ValidationMessageFor(model => model.url_facebok)
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.url_twitter, "Twitter URL", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.url_twitter, new { @class = "form-control", placeholder = "Twitter URL", MaxLength = "255" })
+                                        @Html.ValidationMessageFor(model => model.url_twitter)
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    <div class="panel-actions">
+                                        <div class="col-sm-6">
+                                            <div class="mb-md">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h2 class="panel-title">Material para download</h2>
+                                </header>
+                                <br />
+
+                                <div class="checkbox checkbox-danger checkbox-inline">
+                                    <input type="checkbox" class="styled" id="checkarq" value="1">
+                                    <label for="checkarq"> Áudio ou PDF </label>
+                                </div>
+                                <div class="checkbox checkbox-danger checkbox-inline">
+                                    <input type="checkbox" class="styled" id="checkimg" value="1">
+                                    <label for="checkimg"> Imagem </label>
+                                </div>
+
+                                <br />
+                                <br />
+
+                                <div class="form-group" id="blocoarq">
+                                    @Html.Label("Arquivo do Material", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input type="file" name="arquivo" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="blocoimagem">
+                                    @Html.Label("Android LDPI - 320x426px (PNG)", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input type="file" name="ldpi" />
+                                    </div>
+                                    @if (Model.url_ldpi != null)
+                                    {
+                                        <div class="col-md-10">
+                                            <div class="img-responsive">
+                                                <img src="@Model.url_ldpi" class="" alt="" width="450">
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                                <div class="form-group" id="blocoimagem2">
+                                    @Html.Label("Android MDPI - 320x470px (PNG)", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input type="file" name="mdpi" />
+                                    </div>
+                                    @if (Model.url_mdpi != null)
+                                    {
+                                        <div class="col-md-10">
+                                            <div class="img-responsive">
+                                                <img src="@Model.url_mdpi" class="" alt="" width="450">
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                                <div class="form-group" id="blocoimagem3">
+                                    @Html.Label("Android HDPI - 480x640px (PNG)", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input type="file" name="hdpi" />
+                                    </div>
+                                    @if (Model.url_hdpi != null)
+                                    {
+                                        <div class="col-md-10">
+                                            <div class="img-responsive">
+                                                <img src="@Model.url_hdpi" class="" alt="" width="450">
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                                <div class="form-group" id="blocoimagem4">
+                                    @Html.Label("Android XHDPI - 720x960px (PNG)", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input type="file" name="xhdpi" />
+                                    </div>
+                                    @if (Model.url_xhdpi != null)
+                                    {
+                                        <div class="col-md-10">
+                                            <div class="img-responsive">
+                                                <img src="@Model.url_xhdpi" class="" alt="" width="450">
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                                <div class="form-group" id="blocoimagem5">
+                                    @Html.Label("iPhone 4 - 640x960px (PNG)", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input type="file" name="iphone4" />
+                                    </div>
+                                    @if (Model.iphone4 != null)
+                                    {
+                                        <div class="col-md-10">
+                                            <div class="img-responsive">
+                                                <img src="@Model.iphone4" class="" alt="" width="450">
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                                <div class="form-group" id="blocoimagem6">
+                                    @Html.Label("iPhone 5 - 640x1136px (PNG)", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input type="file" name="iphone5" />
+                                    </div>
+                                    @if (Model.iphone5 != null)
+                                    {
+                                        <div class="col-md-10">
+                                            <div class="img-responsive">
+                                                <img src="@Model.iphone5" class="" alt="" width="450">
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                                <div class="form-group" id="blocoimagem7">
+                                    @Html.Label("iPhone 6 - 750x1334px (PNG)", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input type="file" name="iphone6" />
+                                    </div>
+                                    @if (Model.iphone6 != null)
+                                    {
+                                        <div class="col-md-10">
+                                            <div class="img-responsive">
+                                                <img src="@Model.iphone6" class="" alt="" width="450">
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                                <div class="form-group" id="blocoimagem8">
+                                    @Html.Label("iPhone 6 Plus - 1242x2208px (PNG)", new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input type="file" name="iphone6plus" />
+                                    </div>
+                                    @if (Model.iphone6plus != null)
+                                    {
+                                        <div class="col-md-10">
+                                            <div class="img-responsive">
+                                                <img src="@Model.iphone6plus" class="" alt="" width="450">
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+
+                            <a class="btn btn-default" id="btneditarmaterial">Gravar</a>
+
+                        </div>
+                    </div>
+                </div>
+        </section>
+                </div>
+    </div>
+}

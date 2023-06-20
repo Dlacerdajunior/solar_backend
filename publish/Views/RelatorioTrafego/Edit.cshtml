@@ -1,0 +1,57 @@
+﻿@model SolarEP.Models.log_acesso
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAjax.cshtml";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formeditarrtfg" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.id)
+
+
+    <script>
+        $(function () {
+            // your code goes here
+            $("#bteditarrtfg").click(function (data) {
+           //     nome = $("#nome").val()
+                if (1=2) {
+                    alert("É necessário preencher os campos abaixo");
+                    return false;
+                }
+                else {
+                    $("#formeditarrtfg").submit();
+                    return false;
+                }
+            });
+        });
+    </script>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.tela, "Tela", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.tela, new { @class = "form-control", placeholder = "Tela" })
+            @Html.ValidationMessageFor(model => model.tela)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.datalog, "Data", new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.datalog, new { @class = "form-control", placeholder = "Tela" })
+            @Html.ValidationMessageFor(model => model.datalog)
+        </div>
+        @Html.LabelFor(model => model.id_loja, "Loja", new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.DropDownList("id_loja", String.Empty)
+            @Html.ValidationMessageFor(model => model.id_loja)
+        </div>
+    </div>
+
+
+}
+

@@ -1,0 +1,67 @@
+﻿@model SolarEP.Models.visita
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>visita</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lojas.cnpj_loja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lojas.cnpj_loja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.visita_status.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.visita_status.nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

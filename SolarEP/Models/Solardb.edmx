@@ -1,0 +1,1877 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SolardbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="adm_tipo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="administrador">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="30" />
+          <Property Name="nome" Type="varchar" MaxLength="50" />
+          <Property Name="login" Type="varchar" MaxLength="15" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="senha" Type="varchar" MaxLength="255" />
+          <Property Name="mandante" Type="varchar" MaxLength="3" />
+          <Property Name="email_codigo" Type="varchar" MaxLength="255" />
+          <Property Name="tipo_usuario" Type="int" />
+          <Property Name="adm_tipo" Type="int" />
+        </EntityType>
+        <EntityType Name="ajuda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="text" />
+          <Property Name="descricao" Type="text" />
+          <Property Name="url" Type="text" />
+        </EntityType>
+        <EntityType Name="backgrounds">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="url_background" Type="text" />
+        </EntityType>
+        <EntityType Name="campanha_ativa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ativa" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="campanha_foto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_campanha" Type="int" Nullable="false" />
+          <Property Name="foto" Type="text" Nullable="false" />
+          <Property Name="id_loja" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="campanha_loja">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_loja" Type="int" Nullable="false" />
+          <Property Name="id_campanha" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="campanha_tipo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categoria_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoria_nome" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="checklist_codigo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="checklist_equipamento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="255" />
+          <Property Name="texto" Type="text" />
+        </EntityType>
+        <EntityType Name="ciclo_robo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="metodo" Type="varchar" MaxLength="255" />
+          <Property Name="data" Type="datetime" />
+          <Property Name="status" Type="int" />
+          <Property Name="ciclo" Type="int" />
+        </EntityType>
+        <EntityType Name="configuracao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="255" />
+          <Property Name="valor" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <EntityType Name="documentos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" />
+          <Property Name="descricao" Type="varchar" MaxLength="50" />
+          <Property Name="arquivo_url" Type="text" />
+          <Property Name="criacao" Type="datetime" />
+        </EntityType>
+        <EntityType Name="equipamento_loja">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_equipamento" Type="int" Nullable="false" />
+          <Property Name="id_loja" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="equipamentos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="int" />
+          <Property Name="nome" Type="varchar" MaxLength="30" />
+          <Property Name="descricao" Type="text" />
+          <Property Name="url_foto" Type="text" />
+        </EntityType>
+        <EntityType Name="faq">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="faq_grupo" Type="int" Nullable="false" />
+          <Property Name="faq_pergunta" Type="text" Nullable="false" />
+          <Property Name="faq_resposta" Type="text" />
+          <Property Name="ultima_atualizacao" Type="date" />
+          <Property Name="color" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="gestao_campanha">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="50" />
+          <Property Name="url_foto" Type="text" />
+          <Property Name="descricao_curta" Type="varchar" MaxLength="255" />
+          <Property Name="descricao" Type="text" />
+          <Property Name="permissao_img" Type="int" />
+          <Property Name="aderir" Type="int" />
+          <Property Name="url_facebok" Type="varchar" MaxLength="255" />
+          <Property Name="url_twitter" Type="varchar" MaxLength="255" />
+          <Property Name="url_youtube" Type="varchar" MaxLength="255" />
+          <Property Name="id_tipocampanha" Type="int" Nullable="false" />
+          <Property Name="url_arquivo" Type="varchar" MaxLength="255" />
+          <Property Name="url_ldpi" Type="varchar" MaxLength="255" />
+          <Property Name="url_mdpi" Type="varchar" MaxLength="255" />
+          <Property Name="url_hdpi" Type="varchar" MaxLength="255" />
+          <Property Name="url_xhdpi" Type="varchar" MaxLength="255" />
+          <Property Name="link" Type="text" />
+          <Property Name="link_nome" Type="varchar" MaxLength="255" />
+          <Property Name="permitir_lista" Type="int" />
+          <Property Name="iphone4" Type="varchar" MaxLength="255" />
+          <Property Name="iphone5" Type="varchar" MaxLength="255" />
+          <Property Name="iphone6" Type="varchar" MaxLength="255" />
+          <Property Name="iphone6plus" Type="varchar" MaxLength="255" />
+          <Property Name="base64_foto" Type="text" />
+          <Property Name="ativa" Type="int" />
+          <Property Name="icon_image" Type="text" />
+        </EntityType>
+        <EntityType Name="grupos_faq">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grupo_faq" Type="varchar" MaxLength="55" />
+        </EntityType>
+        <EntityType Name="listacompra_loja">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_loja" Type="int" Nullable="false" />
+          <Property Name="id_campanha" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="log_acesso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tela" Type="varchar" MaxLength="200" />
+          <Property Name="datalog" Type="datetime" />
+          <Property Name="id_loja" Type="int" />
+        </EntityType>
+        <EntityType Name="loja_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status_nome" Type="varchar" MaxLength="55" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lojas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="cnpj_loja" Type="varchar" MaxLength="255" />
+          <Property Name="razao_social_loja" Type="varchar" MaxLength="255" />
+          <Property Name="loja_ativa" Type="varchar" MaxLength="255" />
+          <Property Name="nome_contato" Type="varchar" MaxLength="255" />
+          <Property Name="email_contato" Type="varchar" MaxLength="255" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lattext" Type="varchar" MaxLength="255" />
+          <Property Name="longtext" Type="varchar" MaxLength="255" />
+          <Property Name="senha" Type="varchar" MaxLength="255" />
+          <Property Name="status_loja" Type="int" />
+          <Property Name="email_codigo" Type="varchar" MaxLength="255" />
+          <Property Name="kunnr" Type="varchar" MaxLength="255" />
+          <Property Name="created" Type="datetime" />
+        </EntityType>
+        <EntityType Name="pedido">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="255" />
+          <Property Name="descricao" Type="varchar" MaxLength="255" />
+          <Property Name="id_loja" Type="int" />
+          <Property Name="id_status" Type="int" />
+        </EntityType>
+        <EntityType Name="produtos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="255" />
+          <Property Name="preco" Type="varchar" MaxLength="255" />
+          <Property Name="url_foto" Type="text" />
+          <Property Name="categoria_id" Type="int" />
+          <Property Name="codigo" Type="int" />
+        </EntityType>
+        <EntityType Name="solicitacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numero_comodato" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="titulo" Type="text" Nullable="false" />
+          <Property Name="descricao_problema" Type="text" Nullable="false" />
+          <Property Name="id_loja" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="status_pedido">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status_nome" Type="varchar" MaxLength="55" />
+        </EntityType>
+        <EntityType Name="uf">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uf_sigla" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="visita">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_loja" Type="int" />
+          <Property Name="id_status" Type="int" />
+          <Property Name="titulo" Type="varchar" MaxLength="255" />
+          <Property Name="descricao" Type="text" />
+          <Property Name="contato" Type="varchar" MaxLength="255" />
+          <Property Name="data" Type="varchar" MaxLength="25" />
+          <Property Name="id_equipamento" Type="varchar" MaxLength="255" />
+          <Property Name="obs_admin" Type="text" />
+          <Property Name="EQFNR" Type="varchar" MaxLength="255" />
+          <Property Name="TYPBZ" Type="varchar" MaxLength="255" />
+          <Property Name="EQUNR" Type="varchar" MaxLength="255" />
+          <Property Name="HERST" Type="varchar" MaxLength="255" />
+          <Property Name="atualiza" Type="varchar" MaxLength="25" />
+          <Property Name="previsao" Type="varchar" MaxLength="25" />
+          <Property Name="tag_equipamento" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="visita_chamado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_visita" Type="int" />
+          <Property Name="chamado" Type="varchar" MaxLength="255" />
+          <Property Name="data" Type="datetime" />
+        </EntityType>
+        <EntityType Name="visita_fotos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_visita" Type="int" />
+          <Property Name="url_foto" Type="text" />
+          <Property Name="data" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="visita_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__administr__adm_t__4B7734FF">
+          <End Role="adm_tipo" Type="Self.adm_tipo" Multiplicity="0..1" />
+          <End Role="administrador" Type="Self.administrador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_tipo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="administrador">
+              <PropertyRef Name="adm_tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__campanha___id_ca__114A936A">
+          <End Role="gestao_campanha" Type="Self.gestao_campanha" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="campanha_foto" Type="Self.campanha_foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gestao_campanha">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="campanha_foto">
+              <PropertyRef Name="id_campanha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__campanha___id_lo__45BE5BA9">
+          <End Role="lojas" Type="Self.lojas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="campanha_foto" Type="Self.campanha_foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="campanha_foto">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__equipamen__id_eq__4CA06362">
+          <End Role="equipamentos" Type="Self.equipamentos" Multiplicity="1" />
+          <End Role="equipamento_loja" Type="Self.equipamento_loja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipamentos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="equipamento_loja">
+              <PropertyRef Name="id_equipamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__equipamen__id_lo__4D94879B">
+          <End Role="lojas" Type="Self.lojas" Multiplicity="1" />
+          <End Role="equipamento_loja" Type="Self.equipamento_loja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="equipamento_loja">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__faq__faq_grupo__5629CD9C">
+          <End Role="grupos_faq" Type="Self.grupos_faq" Multiplicity="1" />
+          <End Role="faq" Type="Self.faq" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupos_faq">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="faq">
+              <PropertyRef Name="faq_grupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gestao_ca__ativa__51300E55">
+          <End Role="campanha_ativa" Type="Self.campanha_ativa" Multiplicity="0..1" />
+          <End Role="gestao_campanha" Type="Self.gestao_campanha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="campanha_ativa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="gestao_campanha">
+              <PropertyRef Name="ativa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gestao_ca__id_ti__01142BA1">
+          <End Role="campanha_tipo" Type="Self.campanha_tipo" Multiplicity="1" />
+          <End Role="gestao_campanha" Type="Self.gestao_campanha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="campanha_tipo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="gestao_campanha">
+              <PropertyRef Name="id_tipocampanha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__listacomp__id_ca__10566F31">
+          <End Role="gestao_campanha" Type="Self.gestao_campanha" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="listacompra_loja" Type="Self.listacompra_loja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gestao_campanha">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="listacompra_loja">
+              <PropertyRef Name="id_campanha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__listacomp__id_lo__0F624AF8">
+          <End Role="lojas" Type="Self.lojas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="listacompra_loja" Type="Self.listacompra_loja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="listacompra_loja">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__log_acess__id_lo__02E7657A">
+          <End Role="lojas" Type="Self.lojas" Multiplicity="0..1" />
+          <End Role="log_acesso" Type="Self.log_acesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="log_acesso">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__loja_camp__id_ca__06CD04F7">
+          <End Role="gestao_campanha" Type="Self.gestao_campanha" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="campanha_loja" Type="Self.campanha_loja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gestao_campanha">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="campanha_loja">
+              <PropertyRef Name="id_campanha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__loja_camp__id_lo__05D8E0BE">
+          <End Role="lojas" Type="Self.lojas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="campanha_loja" Type="Self.campanha_loja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="campanha_loja">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lojas__status_lo__6477ECF3">
+          <End Role="loja_status" Type="Self.loja_status" Multiplicity="0..1" />
+          <End Role="lojas" Type="Self.lojas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loja_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="lojas">
+              <PropertyRef Name="status_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__mudarei__id_loja__5FB337D6">
+          <End Role="lojas" Type="Self.lojas" Multiplicity="1" />
+          <End Role="solicitacao" Type="Self.solicitacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="solicitacao">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido__id_loja__34C8D9D1">
+          <End Role="lojas" Type="Self.lojas" Multiplicity="0..1" />
+          <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido__id_statu__1A14E395">
+          <End Role="status_pedido" Type="Self.status_pedido" Multiplicity="0..1" />
+          <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status_pedido">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="id_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tabela_pr__categ__2B3F6F97">
+          <End Role="categoria_produto" Type="Self.categoria_produto" Multiplicity="0..1" />
+          <End Role="produtos" Type="Self.produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria_produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produtos">
+              <PropertyRef Name="categoria_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__visita__id_loja__160F4887">
+          <End Role="lojas" Type="Self.lojas" Multiplicity="0..1" />
+          <End Role="visita" Type="Self.visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="visita">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__visita__id_statu__1F98B2C1">
+          <End Role="visita_status" Type="Self.visita_status" Multiplicity="0..1" />
+          <End Role="visita" Type="Self.visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="visita_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="visita">
+              <PropertyRef Name="id_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__visita_ch__id_vi__282DF8C2">
+          <End Role="visita" Type="Self.visita" Multiplicity="0..1" />
+          <End Role="visita_chamado" Type="Self.visita_chamado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="visita">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="visita_chamado">
+              <PropertyRef Name="id_visita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__visita_fo__id_vi__1AD3FDA4">
+          <End Role="visita" Type="Self.visita" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="visita_fotos" Type="Self.visita_fotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="visita">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="visita_fotos">
+              <PropertyRef Name="id_visita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SolardbModelStoreContainer">
+          <EntitySet Name="adm_tipo" EntityType="Self.adm_tipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="administrador" EntityType="Self.administrador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ajuda" EntityType="Self.ajuda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="backgrounds" EntityType="Self.backgrounds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="campanha_ativa" EntityType="Self.campanha_ativa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="campanha_foto" EntityType="Self.campanha_foto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="campanha_loja" EntityType="Self.campanha_loja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="campanha_tipo" EntityType="Self.campanha_tipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categoria_produto" EntityType="Self.categoria_produto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="checklist_codigo" EntityType="Self.checklist_codigo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="checklist_equipamento" EntityType="Self.checklist_equipamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ciclo_robo" EntityType="Self.ciclo_robo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="configuracao" EntityType="Self.configuracao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="documentos" EntityType="Self.documentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="equipamento_loja" EntityType="Self.equipamento_loja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="equipamentos" EntityType="Self.equipamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="faq" EntityType="Self.faq" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gestao_campanha" EntityType="Self.gestao_campanha" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="grupos_faq" EntityType="Self.grupos_faq" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="listacompra_loja" EntityType="Self.listacompra_loja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="log_acesso" EntityType="Self.log_acesso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loja_status" EntityType="Self.loja_status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lojas" EntityType="Self.lojas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pedido" EntityType="Self.pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="produtos" EntityType="Self.produtos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="solicitacao" EntityType="Self.solicitacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status_pedido" EntityType="Self.status_pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uf" EntityType="Self.uf" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="visita" EntityType="Self.visita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="visita_chamado" EntityType="Self.visita_chamado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="visita_fotos" EntityType="Self.visita_fotos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="visita_status" EntityType="Self.visita_status" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__administr__adm_t__4B7734FF" Association="Self.FK__administr__adm_t__4B7734FF">
+            <End Role="adm_tipo" EntitySet="adm_tipo" />
+            <End Role="administrador" EntitySet="administrador" />
+          </AssociationSet>
+          <AssociationSet Name="FK__campanha___id_ca__114A936A" Association="Self.FK__campanha___id_ca__114A936A">
+            <End Role="gestao_campanha" EntitySet="gestao_campanha" />
+            <End Role="campanha_foto" EntitySet="campanha_foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__campanha___id_lo__45BE5BA9" Association="Self.FK__campanha___id_lo__45BE5BA9">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="campanha_foto" EntitySet="campanha_foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__equipamen__id_eq__4CA06362" Association="Self.FK__equipamen__id_eq__4CA06362">
+            <End Role="equipamentos" EntitySet="equipamentos" />
+            <End Role="equipamento_loja" EntitySet="equipamento_loja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__equipamen__id_lo__4D94879B" Association="Self.FK__equipamen__id_lo__4D94879B">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="equipamento_loja" EntitySet="equipamento_loja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__faq__faq_grupo__5629CD9C" Association="Self.FK__faq__faq_grupo__5629CD9C">
+            <End Role="grupos_faq" EntitySet="grupos_faq" />
+            <End Role="faq" EntitySet="faq" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gestao_ca__ativa__51300E55" Association="Self.FK__gestao_ca__ativa__51300E55">
+            <End Role="campanha_ativa" EntitySet="campanha_ativa" />
+            <End Role="gestao_campanha" EntitySet="gestao_campanha" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gestao_ca__id_ti__01142BA1" Association="Self.FK__gestao_ca__id_ti__01142BA1">
+            <End Role="campanha_tipo" EntitySet="campanha_tipo" />
+            <End Role="gestao_campanha" EntitySet="gestao_campanha" />
+          </AssociationSet>
+          <AssociationSet Name="FK__listacomp__id_ca__10566F31" Association="Self.FK__listacomp__id_ca__10566F31">
+            <End Role="gestao_campanha" EntitySet="gestao_campanha" />
+            <End Role="listacompra_loja" EntitySet="listacompra_loja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__listacomp__id_lo__0F624AF8" Association="Self.FK__listacomp__id_lo__0F624AF8">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="listacompra_loja" EntitySet="listacompra_loja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__log_acess__id_lo__02E7657A" Association="Self.FK__log_acess__id_lo__02E7657A">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="log_acesso" EntitySet="log_acesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__loja_camp__id_ca__06CD04F7" Association="Self.FK__loja_camp__id_ca__06CD04F7">
+            <End Role="gestao_campanha" EntitySet="gestao_campanha" />
+            <End Role="campanha_loja" EntitySet="campanha_loja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__loja_camp__id_lo__05D8E0BE" Association="Self.FK__loja_camp__id_lo__05D8E0BE">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="campanha_loja" EntitySet="campanha_loja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__lojas__status_lo__6477ECF3" Association="Self.FK__lojas__status_lo__6477ECF3">
+            <End Role="loja_status" EntitySet="loja_status" />
+            <End Role="lojas" EntitySet="lojas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__mudarei__id_loja__5FB337D6" Association="Self.FK__mudarei__id_loja__5FB337D6">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="solicitacao" EntitySet="solicitacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido__id_loja__34C8D9D1" Association="Self.FK__pedido__id_loja__34C8D9D1">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="pedido" EntitySet="pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido__id_statu__1A14E395" Association="Self.FK__pedido__id_statu__1A14E395">
+            <End Role="status_pedido" EntitySet="status_pedido" />
+            <End Role="pedido" EntitySet="pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tabela_pr__categ__2B3F6F97" Association="Self.FK__tabela_pr__categ__2B3F6F97">
+            <End Role="categoria_produto" EntitySet="categoria_produto" />
+            <End Role="produtos" EntitySet="produtos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__visita__id_loja__160F4887" Association="Self.FK__visita__id_loja__160F4887">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="visita" EntitySet="visita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__visita__id_statu__1F98B2C1" Association="Self.FK__visita__id_statu__1F98B2C1">
+            <End Role="visita_status" EntitySet="visita_status" />
+            <End Role="visita" EntitySet="visita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__visita_ch__id_vi__282DF8C2" Association="Self.FK__visita_ch__id_vi__282DF8C2">
+            <End Role="visita" EntitySet="visita" />
+            <End Role="visita_chamado" EntitySet="visita_chamado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__visita_fo__id_vi__1AD3FDA4" Association="Self.FK__visita_fo__id_vi__1AD3FDA4">
+            <End Role="visita" EntitySet="visita" />
+            <End Role="visita_fotos" EntitySet="visita_fotos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SolardbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="adm_tipo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="administrador" Relationship="Self.FK__administr__adm_t__4B7734FF" FromRole="adm_tipo" ToRole="administrador" />
+        </EntityType>
+        <EntityType Name="administrador">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="login" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="senha" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="mandante" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="email_codigo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_usuario" Type="Int32" />
+          <Property Name="adm_tipo" Type="Int32" />
+          <NavigationProperty Name="adm_tipo1" Relationship="Self.FK__administr__adm_t__4B7734FF" FromRole="administrador" ToRole="adm_tipo" />
+        </EntityType>
+        <EntityType Name="ajuda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="backgrounds">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="url_background" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="campanha_ativa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ativa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="gestao_campanha" Relationship="Self.FK__gestao_ca__ativa__51300E55" FromRole="campanha_ativa" ToRole="gestao_campanha" />
+        </EntityType>
+        <EntityType Name="campanha_foto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_campanha" Type="Int32" Nullable="false" />
+          <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_loja" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="gestao_campanha" Relationship="Self.FK__campanha___id_ca__114A936A" FromRole="campanha_foto" ToRole="gestao_campanha" />
+          <NavigationProperty Name="lojas" Relationship="SolardbModel.FK__campanha___id_lo__45BE5BA9" FromRole="campanha_foto" ToRole="lojas" />
+        </EntityType>
+        <EntityType Name="campanha_loja">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_loja" Type="Int32" Nullable="false" />
+          <Property Name="id_campanha" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="gestao_campanha" Relationship="Self.FK__loja_camp__id_ca__06CD04F7" FromRole="campanha_loja" ToRole="gestao_campanha" />
+          <NavigationProperty Name="lojas" Relationship="SolardbModel.FK__loja_camp__id_lo__05D8E0BE" FromRole="campanha_loja" ToRole="lojas" />
+        </EntityType>
+        <EntityType Name="campanha_tipo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="gestao_campanha" Relationship="Self.FK__gestao_ca__id_ti__01142BA1" FromRole="campanha_tipo" ToRole="gestao_campanha" />
+        </EntityType>
+        <EntityType Name="categoria_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categoria_nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="produtos" Relationship="Self.FK__tabela_pr__categ__2B3F6F97" FromRole="categoria_produto" ToRole="produtos" />
+        </EntityType>
+        <EntityType Name="checklist_codigo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="checklist_equipamento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="texto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="documentos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="arquivo_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="criacao" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="equipamento_loja">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_equipamento" Type="Int32" Nullable="false" />
+          <Property Name="id_loja" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="equipamentos" Relationship="Self.FK__equipamen__id_eq__4CA06362" FromRole="equipamento_loja" ToRole="equipamentos" />
+          <NavigationProperty Name="lojas" Relationship="SolardbModel.FK__equipamen__id_lo__4D94879B" FromRole="equipamento_loja" ToRole="lojas" />
+        </EntityType>
+        <EntityType Name="equipamentos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="Int32" />
+          <Property Name="nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="url_foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="equipamento_loja" Relationship="Self.FK__equipamen__id_eq__4CA06362" FromRole="equipamentos" ToRole="equipamento_loja" />
+        </EntityType>
+        <EntityType Name="faq">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="faq_grupo" Type="Int32" Nullable="false" />
+          <Property Name="faq_pergunta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="faq_resposta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ultima_atualizacao" Type="DateTime" Precision="0" />
+          <Property Name="color" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="grupos_faq" Relationship="Self.FK__faq__faq_grupo__5629CD9C" FromRole="faq" ToRole="grupos_faq" />
+        </EntityType>
+        <EntityType Name="gestao_campanha">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="url_foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="descricao_curta" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="permissao_img" Type="Int32" />
+          <Property Name="aderir" Type="Int32" />
+          <Property Name="url_facebok" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="url_twitter" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="url_youtube" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="id_tipocampanha" Type="Int32" Nullable="false" />
+          <Property Name="url_arquivo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="url_ldpi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="url_mdpi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="url_hdpi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="url_xhdpi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="link_nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="permitir_lista" Type="Int32" />
+          <Property Name="iphone4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="iphone5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="iphone6" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="iphone6plus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="base64_foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ativa" Type="Int32" />
+          <Property Name="icon_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="campanha_ativa" Relationship="Self.FK__gestao_ca__ativa__51300E55" FromRole="gestao_campanha" ToRole="campanha_ativa" />
+          <NavigationProperty Name="campanha_foto" Relationship="Self.FK__campanha___id_ca__114A936A" FromRole="gestao_campanha" ToRole="campanha_foto" />
+          <NavigationProperty Name="campanha_loja" Relationship="Self.FK__loja_camp__id_ca__06CD04F7" FromRole="gestao_campanha" ToRole="campanha_loja" />
+          <NavigationProperty Name="campanha_tipo" Relationship="Self.FK__gestao_ca__id_ti__01142BA1" FromRole="gestao_campanha" ToRole="campanha_tipo" />
+          <NavigationProperty Name="listacompra_loja" Relationship="Self.FK__listacomp__id_ca__10566F31" FromRole="gestao_campanha" ToRole="listacompra_loja" />
+        </EntityType>
+        <EntityType Name="grupos_faq">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grupo_faq" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="faq" Relationship="Self.FK__faq__faq_grupo__5629CD9C" FromRole="grupos_faq" ToRole="faq" />
+        </EntityType>
+        <EntityType Name="listacompra_loja">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_loja" Type="Int32" Nullable="false" />
+          <Property Name="id_campanha" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="gestao_campanha" Relationship="Self.FK__listacomp__id_ca__10566F31" FromRole="listacompra_loja" ToRole="gestao_campanha" />
+          <NavigationProperty Name="lojas" Relationship="SolardbModel.FK__listacomp__id_lo__0F624AF8" FromRole="listacompra_loja" ToRole="lojas" />
+        </EntityType>
+        <EntityType Name="loja_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status_nome" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="lojas" Relationship="SolardbModel.FK__lojas__status_lo__6477ECF3" FromRole="loja_status" ToRole="lojas" />
+        </EntityType>
+        <EntityType Name="pedido">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="id_loja" Type="Int32" />
+          <Property Name="id_status" Type="Int32" />
+          <NavigationProperty Name="status_pedido" Relationship="Self.FK__pedido__id_statu__1A14E395" FromRole="pedido" ToRole="status_pedido" />
+          <NavigationProperty Name="lojas" Relationship="SolardbModel.FK__pedido__id_loja__34C8D9D1" FromRole="pedido" ToRole="lojas" />
+        </EntityType>
+        <EntityType Name="produtos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="preco" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="url_foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="categoria_id" Type="Int32" />
+          <Property Name="codigo" Type="Int32" />
+          <NavigationProperty Name="categoria_produto" Relationship="Self.FK__tabela_pr__categ__2B3F6F97" FromRole="produtos" ToRole="categoria_produto" />
+        </EntityType>
+        <EntityType Name="solicitacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero_comodato" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descricao_problema" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_loja" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="lojas" Relationship="SolardbModel.FK__mudarei__id_loja__5FB337D6" FromRole="solicitacao" ToRole="lojas" />
+        </EntityType>
+        <EntityType Name="status_pedido">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status_nome" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="pedido" Relationship="Self.FK__pedido__id_statu__1A14E395" FromRole="status_pedido" ToRole="pedido" />
+        </EntityType>
+        <EntityType Name="uf">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uf_sigla" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="visita_chamado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_visita" Type="Int32" />
+          <Property Name="chamado" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="data" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="visita" Relationship="SolardbModel.FK__visita_ch__id_vi__282DF8C2" FromRole="visita_chamado" ToRole="visita" />
+        </EntityType>
+        <EntityType Name="visita_fotos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_visita" Type="Int32" />
+          <Property Name="url_foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="data" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="visita" Relationship="SolardbModel.FK__visita_fo__id_vi__1AD3FDA4" FromRole="visita_fotos" ToRole="visita" />
+        </EntityType>
+        <EntityType Name="visita_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="visita" Relationship="SolardbModel.FK__visita__id_statu__1F98B2C1" FromRole="visita_status" ToRole="visita" />
+        </EntityType>
+        <Association Name="FK__administr__adm_t__4B7734FF">
+          <End Role="adm_tipo" Type="Self.adm_tipo" Multiplicity="0..1" />
+          <End Role="administrador" Type="Self.administrador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adm_tipo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="administrador">
+              <PropertyRef Name="adm_tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gestao_ca__ativa__51300E55">
+          <End Role="campanha_ativa" Type="Self.campanha_ativa" Multiplicity="0..1" />
+          <End Role="gestao_campanha" Type="Self.gestao_campanha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="campanha_ativa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="gestao_campanha">
+              <PropertyRef Name="ativa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__campanha___id_ca__114A936A">
+          <End Role="gestao_campanha" Type="Self.gestao_campanha" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="campanha_foto" Type="Self.campanha_foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gestao_campanha">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="campanha_foto">
+              <PropertyRef Name="id_campanha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__loja_camp__id_ca__06CD04F7">
+          <End Role="gestao_campanha" Type="Self.gestao_campanha" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="campanha_loja" Type="Self.campanha_loja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gestao_campanha">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="campanha_loja">
+              <PropertyRef Name="id_campanha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gestao_ca__id_ti__01142BA1">
+          <End Role="campanha_tipo" Type="Self.campanha_tipo" Multiplicity="1" />
+          <End Role="gestao_campanha" Type="Self.gestao_campanha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="campanha_tipo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="gestao_campanha">
+              <PropertyRef Name="id_tipocampanha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tabela_pr__categ__2B3F6F97">
+          <End Role="categoria_produto" Type="Self.categoria_produto" Multiplicity="0..1" />
+          <End Role="produtos" Type="Self.produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria_produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produtos">
+              <PropertyRef Name="categoria_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__equipamen__id_eq__4CA06362">
+          <End Role="equipamentos" Type="Self.equipamentos" Multiplicity="1" />
+          <End Role="equipamento_loja" Type="Self.equipamento_loja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipamentos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="equipamento_loja">
+              <PropertyRef Name="id_equipamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__faq__faq_grupo__5629CD9C">
+          <End Role="grupos_faq" Type="Self.grupos_faq" Multiplicity="1" />
+          <End Role="faq" Type="Self.faq" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupos_faq">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="faq">
+              <PropertyRef Name="faq_grupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__listacomp__id_ca__10566F31">
+          <End Role="gestao_campanha" Type="Self.gestao_campanha" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="listacompra_loja" Type="Self.listacompra_loja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gestao_campanha">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="listacompra_loja">
+              <PropertyRef Name="id_campanha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido__id_statu__1A14E395">
+          <End Role="status_pedido" Type="Self.status_pedido" Multiplicity="0..1" />
+          <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status_pedido">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="id_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SolardbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="adm_tipo" EntityType="Self.adm_tipo" />
+          <EntitySet Name="administrador" EntityType="Self.administrador" />
+          <EntitySet Name="ajuda" EntityType="Self.ajuda" />
+          <EntitySet Name="backgrounds" EntityType="Self.backgrounds" />
+          <EntitySet Name="campanha_ativa" EntityType="Self.campanha_ativa" />
+          <EntitySet Name="campanha_foto" EntityType="Self.campanha_foto" />
+          <EntitySet Name="campanha_loja" EntityType="Self.campanha_loja" />
+          <EntitySet Name="campanha_tipo" EntityType="Self.campanha_tipo" />
+          <EntitySet Name="categoria_produto" EntityType="Self.categoria_produto" />
+          <EntitySet Name="checklist_codigo" EntityType="Self.checklist_codigo" />
+          <EntitySet Name="checklist_equipamento" EntityType="Self.checklist_equipamento" />
+          <EntitySet Name="documentos" EntityType="Self.documentos" />
+          <EntitySet Name="equipamento_loja" EntityType="Self.equipamento_loja" />
+          <EntitySet Name="equipamentos" EntityType="Self.equipamentos" />
+          <EntitySet Name="faq" EntityType="Self.faq" />
+          <EntitySet Name="gestao_campanha" EntityType="Self.gestao_campanha" />
+          <EntitySet Name="grupos_faq" EntityType="Self.grupos_faq" />
+          <EntitySet Name="listacompra_loja" EntityType="Self.listacompra_loja" />
+          <EntitySet Name="loja_status" EntityType="Self.loja_status" />
+          <EntitySet Name="pedido" EntityType="Self.pedido" />
+          <EntitySet Name="produtos" EntityType="Self.produtos" />
+          <EntitySet Name="solicitacao" EntityType="Self.solicitacao" />
+          <EntitySet Name="status_pedido" EntityType="Self.status_pedido" />
+          <EntitySet Name="uf" EntityType="Self.uf" />
+          <EntitySet Name="visita_chamado" EntityType="Self.visita_chamado" />
+          <EntitySet Name="visita_fotos" EntityType="Self.visita_fotos" />
+          <EntitySet Name="visita_status" EntityType="Self.visita_status" />
+          <AssociationSet Name="FK__administr__adm_t__4B7734FF" Association="Self.FK__administr__adm_t__4B7734FF">
+            <End Role="adm_tipo" EntitySet="adm_tipo" />
+            <End Role="administrador" EntitySet="administrador" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gestao_ca__ativa__51300E55" Association="Self.FK__gestao_ca__ativa__51300E55">
+            <End Role="campanha_ativa" EntitySet="campanha_ativa" />
+            <End Role="gestao_campanha" EntitySet="gestao_campanha" />
+          </AssociationSet>
+          <AssociationSet Name="FK__campanha___id_ca__114A936A" Association="Self.FK__campanha___id_ca__114A936A">
+            <End Role="gestao_campanha" EntitySet="gestao_campanha" />
+            <End Role="campanha_foto" EntitySet="campanha_foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__loja_camp__id_ca__06CD04F7" Association="Self.FK__loja_camp__id_ca__06CD04F7">
+            <End Role="gestao_campanha" EntitySet="gestao_campanha" />
+            <End Role="campanha_loja" EntitySet="campanha_loja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gestao_ca__id_ti__01142BA1" Association="Self.FK__gestao_ca__id_ti__01142BA1">
+            <End Role="campanha_tipo" EntitySet="campanha_tipo" />
+            <End Role="gestao_campanha" EntitySet="gestao_campanha" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tabela_pr__categ__2B3F6F97" Association="Self.FK__tabela_pr__categ__2B3F6F97">
+            <End Role="categoria_produto" EntitySet="categoria_produto" />
+            <End Role="produtos" EntitySet="produtos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__equipamen__id_eq__4CA06362" Association="Self.FK__equipamen__id_eq__4CA06362">
+            <End Role="equipamentos" EntitySet="equipamentos" />
+            <End Role="equipamento_loja" EntitySet="equipamento_loja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__faq__faq_grupo__5629CD9C" Association="Self.FK__faq__faq_grupo__5629CD9C">
+            <End Role="grupos_faq" EntitySet="grupos_faq" />
+            <End Role="faq" EntitySet="faq" />
+          </AssociationSet>
+          <AssociationSet Name="FK__listacomp__id_ca__10566F31" Association="Self.FK__listacomp__id_ca__10566F31">
+            <End Role="gestao_campanha" EntitySet="gestao_campanha" />
+            <End Role="listacompra_loja" EntitySet="listacompra_loja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido__id_statu__1A14E395" Association="Self.FK__pedido__id_statu__1A14E395">
+            <End Role="status_pedido" EntitySet="status_pedido" />
+            <End Role="pedido" EntitySet="pedido" />
+          </AssociationSet>
+          <EntitySet Name="log_acesso" EntityType="SolardbModel.log_acesso" />
+          <EntitySet Name="ciclo_robo" EntityType="SolardbModel.ciclo_robo" />
+          <EntitySet Name="configuracao" EntityType="SolardbModel.configuracao" />
+          <EntitySet Name="visita" EntityType="SolardbModel.visita" />
+          <AssociationSet Name="FK__visita__id_statu__1F98B2C1" Association="SolardbModel.FK__visita__id_statu__1F98B2C1">
+            <End Role="visita_status" EntitySet="visita_status" />
+            <End Role="visita" EntitySet="visita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__visita_ch__id_vi__282DF8C2" Association="SolardbModel.FK__visita_ch__id_vi__282DF8C2">
+            <End Role="visita" EntitySet="visita" />
+            <End Role="visita_chamado" EntitySet="visita_chamado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__visita_fo__id_vi__1AD3FDA4" Association="SolardbModel.FK__visita_fo__id_vi__1AD3FDA4">
+            <End Role="visita" EntitySet="visita" />
+            <End Role="visita_fotos" EntitySet="visita_fotos" />
+          </AssociationSet>
+          <EntitySet Name="lojas" EntityType="SolardbModel.lojas" />
+          <AssociationSet Name="FK__campanha___id_lo__45BE5BA9" Association="SolardbModel.FK__campanha___id_lo__45BE5BA9">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="campanha_foto" EntitySet="campanha_foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__loja_camp__id_lo__05D8E0BE" Association="SolardbModel.FK__loja_camp__id_lo__05D8E0BE">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="campanha_loja" EntitySet="campanha_loja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__equipamen__id_lo__4D94879B" Association="SolardbModel.FK__equipamen__id_lo__4D94879B">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="equipamento_loja" EntitySet="equipamento_loja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__listacomp__id_lo__0F624AF8" Association="SolardbModel.FK__listacomp__id_lo__0F624AF8">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="listacompra_loja" EntitySet="listacompra_loja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__log_acess__id_lo__02E7657A" Association="SolardbModel.FK__log_acess__id_lo__02E7657A">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="log_acesso" EntitySet="log_acesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__lojas__status_lo__6477ECF3" Association="SolardbModel.FK__lojas__status_lo__6477ECF3">
+            <End Role="loja_status" EntitySet="loja_status" />
+            <End Role="lojas" EntitySet="lojas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__mudarei__id_loja__5FB337D6" Association="SolardbModel.FK__mudarei__id_loja__5FB337D6">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="solicitacao" EntitySet="solicitacao" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido__id_loja__34C8D9D1" Association="SolardbModel.FK__pedido__id_loja__34C8D9D1">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="pedido" EntitySet="pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__visita__id_loja__160F4887" Association="SolardbModel.FK__visita__id_loja__160F4887">
+            <End Role="lojas" EntitySet="lojas" />
+            <End Role="visita" EntitySet="visita" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="log_acesso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tela" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="datalog" Type="DateTime" Precision="3" />
+          <Property Name="id_loja" Type="Int32" />
+          <NavigationProperty Name="lojas" Relationship="SolardbModel.FK__log_acess__id_lo__02E7657A" FromRole="log_acesso" ToRole="lojas" />
+        </EntityType>
+        <EntityType Name="ciclo_robo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="metodo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="data" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="ciclo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="configuracao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="valor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="visita">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_loja" Type="Int32" />
+          <Property Name="id_status" Type="Int32" />
+          <Property Name="titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="contato" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="data" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="id_equipamento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="obs_admin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EQFNR" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TYPBZ" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EQUNR" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HERST" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="atualiza" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="previsao" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="tag_equipamento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="visita_status" Relationship="SolardbModel.FK__visita__id_statu__1F98B2C1" FromRole="visita" ToRole="visita_status" />
+          <NavigationProperty Name="visita_chamado" Relationship="SolardbModel.FK__visita_ch__id_vi__282DF8C2" FromRole="visita" ToRole="visita_chamado" />
+          <NavigationProperty Name="visita_fotos" Relationship="SolardbModel.FK__visita_fo__id_vi__1AD3FDA4" FromRole="visita" ToRole="visita_fotos" />
+          <NavigationProperty Name="lojas" Relationship="SolardbModel.FK__visita__id_loja__160F4887" FromRole="visita" ToRole="lojas" />
+        </EntityType>
+        <Association Name="FK__visita__id_statu__1F98B2C1">
+          <End Type="SolardbModel.visita_status" Role="visita_status" Multiplicity="0..1" />
+          <End Type="SolardbModel.visita" Role="visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="visita_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="visita">
+              <PropertyRef Name="id_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__visita_ch__id_vi__282DF8C2">
+          <End Type="SolardbModel.visita" Role="visita" Multiplicity="0..1" />
+          <End Type="SolardbModel.visita_chamado" Role="visita_chamado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="visita">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="visita_chamado">
+              <PropertyRef Name="id_visita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__visita_fo__id_vi__1AD3FDA4">
+          <End Type="SolardbModel.visita" Role="visita" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SolardbModel.visita_fotos" Role="visita_fotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="visita">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="visita_fotos">
+              <PropertyRef Name="id_visita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="lojas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="cnpj_loja" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="razao_social_loja" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="loja_ativa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="nome_contato" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email_contato" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lattext" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="longtext" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="senha" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status_loja" Type="Int32" />
+          <Property Name="email_codigo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="kunnr" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="created" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="campanha_foto" Relationship="SolardbModel.FK__campanha___id_lo__45BE5BA9" FromRole="lojas" ToRole="campanha_foto" />
+          <NavigationProperty Name="campanha_loja" Relationship="SolardbModel.FK__loja_camp__id_lo__05D8E0BE" FromRole="lojas" ToRole="campanha_loja" />
+          <NavigationProperty Name="equipamento_loja" Relationship="SolardbModel.FK__equipamen__id_lo__4D94879B" FromRole="lojas" ToRole="equipamento_loja" />
+          <NavigationProperty Name="listacompra_loja" Relationship="SolardbModel.FK__listacomp__id_lo__0F624AF8" FromRole="lojas" ToRole="listacompra_loja" />
+          <NavigationProperty Name="log_acesso" Relationship="SolardbModel.FK__log_acess__id_lo__02E7657A" FromRole="lojas" ToRole="log_acesso" />
+          <NavigationProperty Name="loja_status" Relationship="SolardbModel.FK__lojas__status_lo__6477ECF3" FromRole="lojas" ToRole="loja_status" />
+          <NavigationProperty Name="solicitacao" Relationship="SolardbModel.FK__mudarei__id_loja__5FB337D6" FromRole="lojas" ToRole="solicitacao" />
+          <NavigationProperty Name="pedido" Relationship="SolardbModel.FK__pedido__id_loja__34C8D9D1" FromRole="lojas" ToRole="pedido" />
+          <NavigationProperty Name="visita" Relationship="SolardbModel.FK__visita__id_loja__160F4887" FromRole="lojas" ToRole="visita" />
+        </EntityType>
+        <Association Name="FK__campanha___id_lo__45BE5BA9">
+          <End Type="SolardbModel.lojas" Role="lojas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SolardbModel.campanha_foto" Role="campanha_foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="campanha_foto">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__loja_camp__id_lo__05D8E0BE">
+          <End Type="SolardbModel.lojas" Role="lojas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SolardbModel.campanha_loja" Role="campanha_loja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="campanha_loja">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__equipamen__id_lo__4D94879B">
+          <End Type="SolardbModel.lojas" Role="lojas" Multiplicity="1" />
+          <End Type="SolardbModel.equipamento_loja" Role="equipamento_loja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="equipamento_loja">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__listacomp__id_lo__0F624AF8">
+          <End Type="SolardbModel.lojas" Role="lojas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SolardbModel.listacompra_loja" Role="listacompra_loja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="listacompra_loja">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__log_acess__id_lo__02E7657A">
+          <End Type="SolardbModel.lojas" Role="lojas" Multiplicity="0..1" />
+          <End Type="SolardbModel.log_acesso" Role="log_acesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="log_acesso">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__lojas__status_lo__6477ECF3">
+          <End Type="SolardbModel.loja_status" Role="loja_status" Multiplicity="0..1" />
+          <End Type="SolardbModel.lojas" Role="lojas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loja_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="lojas">
+              <PropertyRef Name="status_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__mudarei__id_loja__5FB337D6">
+          <End Type="SolardbModel.lojas" Role="lojas" Multiplicity="1" />
+          <End Type="SolardbModel.solicitacao" Role="solicitacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="solicitacao">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido__id_loja__34C8D9D1">
+          <End Type="SolardbModel.lojas" Role="lojas" Multiplicity="0..1" />
+          <End Type="SolardbModel.pedido" Role="pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__visita__id_loja__160F4887">
+          <End Type="SolardbModel.lojas" Role="lojas" Multiplicity="0..1" />
+          <End Type="SolardbModel.visita" Role="visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lojas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="visita">
+              <PropertyRef Name="id_loja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SolardbModelStoreContainer" CdmEntityContainer="SolardbEntities">
+          <EntitySetMapping Name="adm_tipo">
+            <EntityTypeMapping TypeName="SolardbModel.adm_tipo">
+              <MappingFragment StoreEntitySet="adm_tipo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="administrador">
+            <EntityTypeMapping TypeName="SolardbModel.administrador">
+              <MappingFragment StoreEntitySet="administrador">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="mandante" ColumnName="mandante" />
+                <ScalarProperty Name="email_codigo" ColumnName="email_codigo" />
+                <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+                <ScalarProperty Name="adm_tipo" ColumnName="adm_tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ajuda">
+            <EntityTypeMapping TypeName="SolardbModel.ajuda">
+              <MappingFragment StoreEntitySet="ajuda">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="url" ColumnName="url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="backgrounds">
+            <EntityTypeMapping TypeName="SolardbModel.backgrounds">
+              <MappingFragment StoreEntitySet="backgrounds">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="url_background" ColumnName="url_background" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="campanha_ativa">
+            <EntityTypeMapping TypeName="SolardbModel.campanha_ativa">
+              <MappingFragment StoreEntitySet="campanha_ativa">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ativa" ColumnName="ativa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="campanha_foto">
+            <EntityTypeMapping TypeName="SolardbModel.campanha_foto">
+              <MappingFragment StoreEntitySet="campanha_foto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_campanha" ColumnName="id_campanha" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="campanha_loja">
+            <EntityTypeMapping TypeName="SolardbModel.campanha_loja">
+              <MappingFragment StoreEntitySet="campanha_loja">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+                <ScalarProperty Name="id_campanha" ColumnName="id_campanha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="campanha_tipo">
+            <EntityTypeMapping TypeName="SolardbModel.campanha_tipo">
+              <MappingFragment StoreEntitySet="campanha_tipo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categoria_produto">
+            <EntityTypeMapping TypeName="SolardbModel.categoria_produto">
+              <MappingFragment StoreEntitySet="categoria_produto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="categoria_nome" ColumnName="categoria_nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="checklist_codigo">
+            <EntityTypeMapping TypeName="SolardbModel.checklist_codigo">
+              <MappingFragment StoreEntitySet="checklist_codigo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="checklist_equipamento">
+            <EntityTypeMapping TypeName="SolardbModel.checklist_equipamento">
+              <MappingFragment StoreEntitySet="checklist_equipamento">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="texto" ColumnName="texto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="documentos">
+            <EntityTypeMapping TypeName="SolardbModel.documentos">
+              <MappingFragment StoreEntitySet="documentos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="arquivo_url" ColumnName="arquivo_url" />
+                <ScalarProperty Name="criacao" ColumnName="criacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="equipamento_loja">
+            <EntityTypeMapping TypeName="SolardbModel.equipamento_loja">
+              <MappingFragment StoreEntitySet="equipamento_loja">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_equipamento" ColumnName="id_equipamento" />
+                <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="equipamentos">
+            <EntityTypeMapping TypeName="SolardbModel.equipamentos">
+              <MappingFragment StoreEntitySet="equipamentos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="url_foto" ColumnName="url_foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="faq">
+            <EntityTypeMapping TypeName="SolardbModel.faq">
+              <MappingFragment StoreEntitySet="faq">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="faq_grupo" ColumnName="faq_grupo" />
+                <ScalarProperty Name="faq_pergunta" ColumnName="faq_pergunta" />
+                <ScalarProperty Name="faq_resposta" ColumnName="faq_resposta" />
+                <ScalarProperty Name="ultima_atualizacao" ColumnName="ultima_atualizacao" />
+                <ScalarProperty Name="color" ColumnName="color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gestao_campanha">
+            <EntityTypeMapping TypeName="SolardbModel.gestao_campanha">
+              <MappingFragment StoreEntitySet="gestao_campanha">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="url_foto" ColumnName="url_foto" />
+                <ScalarProperty Name="descricao_curta" ColumnName="descricao_curta" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="permissao_img" ColumnName="permissao_img" />
+                <ScalarProperty Name="aderir" ColumnName="aderir" />
+                <ScalarProperty Name="url_facebok" ColumnName="url_facebok" />
+                <ScalarProperty Name="url_twitter" ColumnName="url_twitter" />
+                <ScalarProperty Name="url_youtube" ColumnName="url_youtube" />
+                <ScalarProperty Name="id_tipocampanha" ColumnName="id_tipocampanha" />
+                <ScalarProperty Name="url_arquivo" ColumnName="url_arquivo" />
+                <ScalarProperty Name="url_ldpi" ColumnName="url_ldpi" />
+                <ScalarProperty Name="url_mdpi" ColumnName="url_mdpi" />
+                <ScalarProperty Name="url_hdpi" ColumnName="url_hdpi" />
+                <ScalarProperty Name="url_xhdpi" ColumnName="url_xhdpi" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="link_nome" ColumnName="link_nome" />
+                <ScalarProperty Name="permitir_lista" ColumnName="permitir_lista" />
+                <ScalarProperty Name="iphone4" ColumnName="iphone4" />
+                <ScalarProperty Name="iphone5" ColumnName="iphone5" />
+                <ScalarProperty Name="iphone6" ColumnName="iphone6" />
+                <ScalarProperty Name="iphone6plus" ColumnName="iphone6plus" />
+                <ScalarProperty Name="base64_foto" ColumnName="base64_foto" />
+                <ScalarProperty Name="ativa" ColumnName="ativa" />
+                <ScalarProperty Name="icon_image" ColumnName="icon_image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grupos_faq">
+            <EntityTypeMapping TypeName="SolardbModel.grupos_faq">
+              <MappingFragment StoreEntitySet="grupos_faq">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="grupo_faq" ColumnName="grupo_faq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="listacompra_loja">
+            <EntityTypeMapping TypeName="SolardbModel.listacompra_loja">
+              <MappingFragment StoreEntitySet="listacompra_loja">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+                <ScalarProperty Name="id_campanha" ColumnName="id_campanha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loja_status">
+            <EntityTypeMapping TypeName="SolardbModel.loja_status">
+              <MappingFragment StoreEntitySet="loja_status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="status_nome" ColumnName="status_nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedido">
+            <EntityTypeMapping TypeName="SolardbModel.pedido">
+              <MappingFragment StoreEntitySet="pedido">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+                <ScalarProperty Name="id_status" ColumnName="id_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="produtos">
+            <EntityTypeMapping TypeName="SolardbModel.produtos">
+              <MappingFragment StoreEntitySet="produtos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="preco" ColumnName="preco" />
+                <ScalarProperty Name="url_foto" ColumnName="url_foto" />
+                <ScalarProperty Name="categoria_id" ColumnName="categoria_id" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="solicitacao">
+            <EntityTypeMapping TypeName="SolardbModel.solicitacao">
+              <MappingFragment StoreEntitySet="solicitacao">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="numero_comodato" ColumnName="numero_comodato" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descricao_problema" ColumnName="descricao_problema" />
+                <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status_pedido">
+            <EntityTypeMapping TypeName="SolardbModel.status_pedido">
+              <MappingFragment StoreEntitySet="status_pedido">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="status_nome" ColumnName="status_nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uf">
+            <EntityTypeMapping TypeName="SolardbModel.uf">
+              <MappingFragment StoreEntitySet="uf">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uf_sigla" ColumnName="uf_sigla" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="visita_chamado">
+            <EntityTypeMapping TypeName="SolardbModel.visita_chamado">
+              <MappingFragment StoreEntitySet="visita_chamado">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_visita" ColumnName="id_visita" />
+                <ScalarProperty Name="chamado" ColumnName="chamado" />
+                <ScalarProperty Name="data" ColumnName="data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="visita_fotos">
+            <EntityTypeMapping TypeName="SolardbModel.visita_fotos">
+              <MappingFragment StoreEntitySet="visita_fotos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_visita" ColumnName="id_visita" />
+                <ScalarProperty Name="url_foto" ColumnName="url_foto" />
+                <ScalarProperty Name="data" ColumnName="data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="visita_status">
+            <EntityTypeMapping TypeName="SolardbModel.visita_status">
+              <MappingFragment StoreEntitySet="visita_status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="log_acesso">
+            <EntityTypeMapping TypeName="SolardbModel.log_acesso">
+              <MappingFragment StoreEntitySet="log_acesso">
+                <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+                <ScalarProperty Name="datalog" ColumnName="datalog" />
+                <ScalarProperty Name="tela" ColumnName="tela" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ciclo_robo">
+            <EntityTypeMapping TypeName="SolardbModel.ciclo_robo">
+              <MappingFragment StoreEntitySet="ciclo_robo">
+                <ScalarProperty Name="ciclo" ColumnName="ciclo" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="metodo" ColumnName="metodo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="configuracao">
+            <EntityTypeMapping TypeName="SolardbModel.configuracao">
+              <MappingFragment StoreEntitySet="configuracao">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="visita">
+            <EntityTypeMapping TypeName="SolardbModel.visita">
+              <MappingFragment StoreEntitySet="visita">
+                <ScalarProperty Name="tag_equipamento" ColumnName="tag_equipamento" />
+                <ScalarProperty Name="previsao" ColumnName="previsao" />
+                <ScalarProperty Name="atualiza" ColumnName="atualiza" />
+                <ScalarProperty Name="HERST" ColumnName="HERST" />
+                <ScalarProperty Name="EQUNR" ColumnName="EQUNR" />
+                <ScalarProperty Name="TYPBZ" ColumnName="TYPBZ" />
+                <ScalarProperty Name="EQFNR" ColumnName="EQFNR" />
+                <ScalarProperty Name="obs_admin" ColumnName="obs_admin" />
+                <ScalarProperty Name="id_equipamento" ColumnName="id_equipamento" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="contato" ColumnName="contato" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="id_status" ColumnName="id_status" />
+                <ScalarProperty Name="id_loja" ColumnName="id_loja" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lojas">
+            <EntityTypeMapping TypeName="SolardbModel.lojas">
+              <MappingFragment StoreEntitySet="lojas">
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="kunnr" ColumnName="kunnr" />
+                <ScalarProperty Name="email_codigo" ColumnName="email_codigo" />
+                <ScalarProperty Name="status_loja" ColumnName="status_loja" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="longtext" ColumnName="longtext" />
+                <ScalarProperty Name="lattext" ColumnName="lattext" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email_contato" ColumnName="email_contato" />
+                <ScalarProperty Name="nome_contato" ColumnName="nome_contato" />
+                <ScalarProperty Name="loja_ativa" ColumnName="loja_ativa" />
+                <ScalarProperty Name="razao_social_loja" ColumnName="razao_social_loja" />
+                <ScalarProperty Name="cnpj_loja" ColumnName="cnpj_loja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,43 @@
+﻿@model SolarEP.Models.log_acesso
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>log_acesso</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tela)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tela)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datalog)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datalog)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lojas.cnpj_loja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lojas.cnpj_loja)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

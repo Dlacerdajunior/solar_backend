@@ -1,0 +1,243 @@
+﻿@model SolarEP.Models.lojas
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>lojas</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id_loja_fabricante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_loja_fabricante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.unidade_faturamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.unidade_faturamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cnpj_loja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cnpj_loja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.razao_social_loja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.razao_social_loja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_fantasia_loja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_fantasia_loja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.inscricao_estadual_loja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.inscricao_estadual_loja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_fabricante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_fabricante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loja_ativa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loja_ativa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codigo_tabela_preco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigo_tabela_preco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_contato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_contato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email_contato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_contato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numero_contato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numero_contato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numero2_contato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numero2_contato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_contato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_contato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cod_ibge_municipio_loja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cod_ibge_municipio_loja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cep_loja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cep_loja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_logradouro_loja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_logradouro_loja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_local_loja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_local_loja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bairro_local_loja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bairro_local_loja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cod_ibge_municipio_entrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cod_ibge_municipio_entrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cep_entrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cep_entrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_logradouro_entrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_logradouro_entrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numero_local_entrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numero_local_entrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bairro_local_entrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bairro_local_entrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lattext)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lattext)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.longtext)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.longtext)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.url_foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.url_foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uf.uf_sigla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uf.uf_sigla)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

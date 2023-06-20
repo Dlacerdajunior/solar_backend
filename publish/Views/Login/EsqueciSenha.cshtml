@@ -1,0 +1,88 @@
+﻿@model SolarEP.Models.administrador
+
+@{
+    ViewBag.Title = "EsqueciSenha";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@if (TempData["resposta"] == "true")
+{
+    <script>alert('Código incorreto.')</script>
+}
+
+@if (TempData["deucerto"] == "true")
+{
+    <script>alert('Enviamos para o seu e-mail seu código.')</script>
+}
+
+@if (TempData["sememail"] == "true")
+{
+    <script>alert('Não encontramos seu e-mail em nossa base de dados, o mesmo está correto?')</script>
+}
+
+<!-- start: page -->
+<section class="body-sign">
+    <div class="center-sign">
+        <a href="/Login/EsqueciSenha" class="logo pull-left">
+            <img src="@Url.Content("~/Content/assets/images/Coca-Cola-Solar-Logo.png")" height="55" alt="" />
+        </a>
+
+        <div class="panel panel-sign">
+            <div class="panel-title-sign mt-xl text-right">
+                <h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i> Esqueci minha senha</h2>
+            </div>
+            <div class="panel-body">
+                <form action="@Url.Content("~/Login/ComCodigo")" method="post">
+                    <div class="form-group mb-lg">
+                        <label>Tenho código para recuperar senha.</label>
+                        <div class="input-group input-group-icon">
+                            <input name="comcodigo" type="text" id="btcomcodigo" class="form-control input-lg" placeholder="Insira seu código" />
+                            <span class="input-group-addon">
+                                <span class="icon icon-lg">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-8">
+                        </div>
+                        <div class="col-sm-12 text-right">
+                            <input id="btcodigo" value="Recuperar senha" type="submit" class="btn btn-primary" style="background: #f40000; border: none !important;" />
+                        </div>
+                    </div>
+
+                </form>
+
+                <form action="@Url.Content("~/Login/ComEmail")" method="post">
+                    <div class="form-group mb-lg">
+                        <label>Esqueceu seu código?</label>
+                        <div class="input-group input-group-icon">
+                            <input name="comemail" type="text" id="btcomemail" class="form-control input-lg" placeholder="Insira seu e-mail para lhe enviarmos o código" />
+                            <span class="input-group-addon">
+                                <span class="icon icon-lg">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <a href="/Login/Login" style="color:black">Voltar ao login</a> 
+                        </div>
+                        <div class="col-sm-4 text-right">
+                            <input id="btemail" value="Enviar" type="submit" class="btn btn-primary" style="background: #f40000; border: none !important;" />
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <p class="text-center text-muted mt-md mb-md">&copy; Copyright 2016. All Rights Reserved.</p>
+    </div>
+</section>
+<!-- end: page -->
+

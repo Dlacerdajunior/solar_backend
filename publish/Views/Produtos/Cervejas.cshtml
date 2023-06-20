@@ -1,0 +1,221 @@
+﻿@model PagedList.IPagedList<SolarEP.Models.produtos>
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Cervejas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="@Url.Content("~/Content/assets/vendor/jquery/jquery.js")"></script>
+
+<script>
+    $(function () {
+        // your code goes here
+
+        $(".btadicionartbprecos").click(function () {
+
+            $("#modaladicionartbprecos").load($(this).attr('href'));
+
+            $("#modaladicionartbprecoslink").trigger("click");
+
+            return false;
+
+        });
+
+        $(".bteditartbprecos").click(function () {
+
+            $("#modaleditartbprecos").load($(this).attr('href'));
+
+            $("#modaleditartbprecoslink").trigger("click");
+
+            return false;
+
+        });
+
+        $(".btdeletartbprecoslink").click(function () {
+
+            $("#modaldeletartbprecos").load($(this).attr('href'));
+
+            $("#modaldeletarlink").trigger("click");
+
+            return false;
+
+        });
+
+
+        $("#btdeletartbprecos").click(function () {
+
+            $("#formdeletartbprecos").submit();
+
+        });
+
+    });
+
+</script>
+
+<style>
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+</style>
+
+<header class="page-header">
+    <h2>Lançamento de Produtos</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="home.html">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li><span>Lançamento de Produtos</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"></a>
+    </div>
+</header>
+
+
+<!-- start: page -->
+
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="panel-actions">
+                    <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                    <a href="@Url.Content("~/Produtos/Create")" class="btadicionartbprecos panel-action"><i class="fa fa-plus"></i></a>
+                    <a href="#modalAnim" id="modaladicionartbprecoslink" class="panel-action fa fa-plus modal-with-zoom-anim" style="display:none;"><i class="fa fa-plus"></i></a>
+                </div>
+
+                <h2 class="panel-title">Cervejas</h2>
+            </header>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table mb-none">
+                        <thead>
+                            <tr>
+                                <th width="10%">Foto</th>
+                                <th width="60%">Nome</th>
+                                <th width="20%">Preço</th>
+                                <th width="10%">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    @if (item.url_foto == null)
+                                    {
+                                        <td></td>
+                                    }
+                                    else
+                                    {
+                                        <td><img src="@Html.DisplayFor(modelItem => item.url_foto)" width="50"></td>
+                                    }
+                                    <td>@Html.DisplayFor(modelItem => item.nome)</td>
+                                    <td>R$@Html.DisplayFor(modelItem => item.preco)</td>
+                                    <td class="actions">
+
+                                        <a href="@Url.Content("~/Produtos/edit/"+item.id)" class="bteditartbprecos panel-action"><i class="fa fa-pencil"></i></a>
+
+                                        <a href="#modalAdd" id="modaleditartbprecoslink" class="panel-action modal-with-zoom-anim" style="display:none;"><i class="fa fa-pencil"></i></a>
+
+                                        <a href="@Url.Content("~/Produtos/delete/"+item.id)" class="btdeletartbprecoslink "><i class="fa fa-trash-o"></i></a>
+
+                                        <a href="#modalRemover" id="modaldeletarlink" class="delete-row modal-with-zoom-anim" style="display:none;"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            Página @Model.PageNumber de @Model.PageCount
+            @Html.PagedListPager(Model, Page => Url.Action("Cervejas", new { pagina = Page }))
+        </section>
+    </div>
+</div>
+
+<!-- Modal atualizar -->
+<div id="modalAdd" class="zoom-anim-dialog modal-block modal-block-lg modal-block-primary mfp-hide modal-mob-lg">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Atualizar</h2>
+        </header>
+        <div class="panel-body" id="modaleditartbprecos">
+
+            <!-- conteudo aqui -->
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success modal-atualizar" id="bteditartbprecos">Atualizar</button>
+                    <button class="btn btn-default modal-dismiss">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<!-- Modal Adicionar -->
+<div id="modalAnim" class="zoom-anim-dialog modal-block modal-block-lg modal-block-primary mfp-hide modal-mob-lg">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Adicionar</h2>
+        </header>
+        <div class="panel-body" id="modaladicionartbprecos">
+            <!-- conteudo aqui -->
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success modal-confirm" id="btadicionartbprecos">Adicionar</button>
+                    <button class="btn btn-default modal-dismiss" id="btadicionarcancelartbprecos">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<!-- Modal Remover -->
+<div id="modalRemover" class="zoom-anim-dialog modal-block modal-block-danger mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Deletar</h2>
+        </header>
+        <div class="panel-body" id="modaldeletartbprecos"> </div>
+
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-danger modal-delete" id="btdeletartbprecos">Confirmar</button>
+                    <button class="btn btn-default modal-dismiss">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+
+
+

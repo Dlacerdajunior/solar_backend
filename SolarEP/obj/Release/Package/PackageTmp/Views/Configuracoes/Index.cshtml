@@ -1,0 +1,191 @@
+﻿@model PagedList.IPagedList<SolarEP.Models.configuracao>
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="@Url.Content("~/Content/assets/vendor/jquery/jquery.js")"></script>
+
+<script>
+    $(function () {
+        // your code goes here
+
+        $(".btadicionarconfig").click(function () {
+
+            $("#modaladicionarconfig").load($(this).attr('href'));
+
+            $("#modaladicionarconfiglink").trigger("click");
+
+            return false;
+
+        });
+
+        $(".bteditarconfig").click(function () {
+
+            $("#modaleditarconfig").load($(this).attr('href'));
+
+            $("#modaleditarconfiglink").trigger("click");
+
+            return false;
+
+        });
+
+        $(".btdeletarconfiglink").click(function () {
+
+            $("#modaldeletarconfig").load($(this).attr('href'));
+
+            $("#modaldeletarlink").trigger("click");
+
+            return false;
+
+        });
+
+
+        $("#btdeletarconfig").click(function () {
+
+            $("#formdeletarconfig").submit();
+
+        });
+
+    });
+
+</script>
+
+<header class="page-header">
+    <h2>E-mail de Administrador de Visita Técnica</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li><span>E-mail de Administrador de Visita Técnica</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"></a>
+    </div>
+</header>
+
+<!-- start: page -->
+
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="panel-actions">
+
+                    <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
+                  <!--  <a href="@Url.Content("~/Configuracoes/Create")" class="btadicionarconfig panel-action"><i class="fa fa-plus"></i></a>
+                    <a href="#modalAnim" id="modaladicionarconfiglink" class="panel-action fa fa-plus modal-with-zoom-anim" style="display:none;"><i class="fa fa-plus"></i></a>
+                      -->
+                </div>
+
+                <h2 class="panel-title">E-mail de Administrador de Visita Técnica (@ViewBag.qtd)</h2>
+                <h4>Esta tela de configuração é utilizada para que o administrador do back office escolha qual e-mail receberá notificações de novas visitas técnicas. O e-mail deverá ser inserido editando o registro abaixo, no campo e-mail. </h4>
+                
+            </header>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table mb-none">
+                        <thead>
+                            <tr>
+                                <th width="60%">E-mail</th>
+                                <th width="10%">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.valor)</td>
+                                    <td class="actions">
+                                        <a href="@Url.Content("~/Configuracoes/edit/"+item.id)" class="bteditarconfig panel-action"><i class="fa fa-pencil"></i></a>
+
+                                        <a href="#modalAdd" id="modaleditarconfiglink" class="panel-action modal-with-zoom-anim" style="display:none;"><i class="fa fa-pencil"></i></a>
+
+                                  <!--      <a href="@Url.Content("~/Configuracoes/delete/"+item.id)" class="btdeletarconfiglink "><i class="fa fa-trash-o"></i></a>
+
+                                        <a href="#modalRemover" id="modaldeletarlink" class="delete-row modal-with-zoom-anim" style="display:none;"><i class="fa fa-trash-o"></i></a>
+                                      -->
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            Página @Model.PageNumber de @Model.PageCount
+            @Html.PagedListPager(Model, Page => Url.Action("Index", new { pagina = Page }))
+        </section>
+    </div>
+</div>
+
+
+<!-- Modal atualizar -->
+<div id="modalAdd" class="zoom-anim-dialog modal-block modal-block-primary mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Atualizar</h2>
+        </header>
+        <div class="panel-body" id="modaleditarconfig">
+            <!-- conteudo aqui -->
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success modal-atualizar" id="bteditarconfig">Atualizar</button>
+                    <button class="btn btn-default modal-dismiss">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<!-- Modal Adicionar -->
+<div id="modalAnim" class="zoom-anim-dialog modal-block modal-block-primary mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Adicionar</h2>
+        </header>
+        <div class="panel-body" id="modaladicionarconfig">
+            <!-- conteudo aqui -->
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success modal-confirm" id=btadicionarconfig>Adicionar</button>
+                    <button class="btn btn-default modal-dismiss">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<!-- Modal Remover -->
+<div id="modalRemover" class="zoom-anim-dialog modal-block modal-block-danger mfp-hide">
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">Deletar</h2>
+        </header>
+        <div class="panel-body" id="modaldeletarconfig">
+            <!-- conteudo aqui -->
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-danger modal-delete" id="btdeletarconfig">Confirmar</button>
+                    <button class="btn btn-default modal-dismiss">Cancelar</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+</div>
+
+
+

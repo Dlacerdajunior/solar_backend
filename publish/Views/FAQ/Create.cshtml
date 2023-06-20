@@ -1,0 +1,111 @@
+﻿@model SolarEP.Models.faq
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAjax.cshtml";
+}
+
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formadicionarf4q" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    
+
+    
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            $('#demo').hide();
+            $('#picker').farbtastic('#color');
+        });
+    </script>
+    
+    <script>
+
+        jQuery(function ($) {
+            $('#ultima_atualizacao').mask('00/00/0000');
+        });
+        $(function () {
+            // your code goes here
+            $("#btadicionarf4q").click(function () {
+                faq_pergunta = $("#faq_pergunta").val()
+                faq_resposta = $("#faq_resposta").val()
+                faq_grupo = $("#faq_grupo").val()
+                color = $("#color").val()
+                
+                color2 = color.split("#")
+
+                if (faq_pergunta == "") {
+                    alert("É necessário preencher uma Pergunta");
+                    return false;
+                }
+                else if (faq_resposta == "") {
+                    alert("É necessário preencher uma Resposta");
+                    return false;
+                }
+                else if (faq_grupo == "") {
+                    alert("É necessário selecionar um Grupo");
+                    return false;
+                }
+                else if (color2[0] != "") {
+                    alert("Em uma cor é necessário o símbolo #.");
+                    return false;
+                }
+                else if (color2[1].length != 6 ) {
+                    alert("Esta cor é não válida");
+                    return false;
+                }
+                else {
+                    $("#formadicionarf4q").submit();
+                }
+            });
+        });
+    </script>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.faq_pergunta, "Pergunta", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.faq_pergunta, new { @class = "form-control", placeholder = "Pergunta" })
+            @Html.ValidationMessageFor(model => model.faq_pergunta)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.faq_resposta, "Resposta", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.faq_resposta, new { @class = "form-control", placeholder = "Resposta" })
+            @Html.ValidationMessageFor(model => model.faq_resposta)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.faq_grupo, "Grupos", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownList("faq_grupo", String.Empty)
+            @Html.ValidationMessageFor(model => model.faq_grupo)
+        </div>
+    </div>
+    <!--
+    <div class="form-group">
+        @Html.LabelFor(model => model.ultima_atualizacao, "Ultima Atualização", new { @class = "col-md-3 control-label" })
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.ultima_atualizacao, new { @class = "form-control", placeholder = "00/00/0000" })
+            @Html.ValidationMessageFor(model => model.ultima_atualizacao)
+        </div>
+    </div>-->
+    
+    
+<div class="form-group">
+    <div class="form-item">
+        <label class="col-md-3 control-label" for="color">Color: </label>
+        <input type="text" id="color" name="color" value="#ff0000" placeholder="" class="form-control" />
+    </div>
+    <div id="picker" align="center">
+    </div>    
+</div>
+
+
+}
+

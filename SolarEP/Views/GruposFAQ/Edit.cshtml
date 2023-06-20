@@ -1,0 +1,39 @@
+﻿@model SolarEP.Models.grupos_faq
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAjax.cshtml";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formeditargrupof4q" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.id)
+
+    <script>
+
+        $(function () {
+            // your code goes here
+            $("#bteditargrupof4q").click(function () {
+                grupo_faq = $("#grupo_faq").val()
+
+                if (grupo_faq == "") {
+                    alert("É necessário preencher um Nome para o Grupo");
+                    return false;
+                }
+                else {
+                    $("#formeditargrupof4q").submit();
+                }
+            });
+        });
+    </script>
+        <div class="form-group">
+            @Html.LabelFor(model => model.grupo_faq, "Nome do Grupo", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.grupo_faq, new { @class = "form-control", placeholder = "Nome do Grupo", MaxLength = "55" })
+                @Html.ValidationMessageFor(model => model.grupo_faq)
+            </div>
+        </div>
+}
+

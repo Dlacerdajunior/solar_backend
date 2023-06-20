@@ -1,0 +1,51 @@
+﻿@model SolarEP.Models.faq
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>faq</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.faq_pergunta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.faq_pergunta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.faq_resposta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.faq_resposta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ultima_atualizacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ultima_atualizacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.grupos_faq.grupo_faq)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grupos_faq.grupo_faq)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

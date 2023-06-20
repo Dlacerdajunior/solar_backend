@@ -1,0 +1,58 @@
+﻿@model SolarEP.Models.ajuda
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAjax.cshtml";
+}
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formadicionarajd" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <script>
+        $(function () {
+            // your code goes here
+            $("#btadicionarajd").click(function () {
+                titulo = $("#titulo").val()
+                descricao = $("#descricao").val()
+                if (titulo == "" || descricao == "") {
+                    alert("É necessário preencher os campos marcados com *");
+                    return false;
+                } else {
+                    $("#formadicionarajd").submit();
+                }
+
+            });
+        });
+
+    </script>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.titulo, "Título *", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.titulo, new { @class = "form-control", placeholder = "Título" })
+            @Html.ValidationMessageFor(model => model.titulo)
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.descricao, "Descrição *", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.descricao, new { @class = "form-control", placeholder = "Descrição" })
+            @Html.ValidationMessageFor(model => model.descricao)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.url, "Url", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.url, new { @class = "form-control", placeholder = "Url" })
+            @Html.ValidationMessageFor(model => model.url)
+        </div>
+    </div>
+
+}
+

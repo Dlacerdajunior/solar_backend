@@ -1,0 +1,75 @@
+﻿@model SolarEP.Models.pedido
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAjax.cshtml";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formadicionarpedido" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true)
+
+    <!--  <script>
+
+          jQuery(function ($) {
+              $('#codigo').mask('00000000');
+              $('#primeiro_telefone').mask('(00)00000-0000');
+              $('#segundo_telefone').mask('(00)00000-0000');
+              $('#cep').mask('00000-000');
+              $('#numero').mask('0000000000');
+          });
+
+      </script> -->
+
+    <script>
+        $(function () {
+            // your code goes here
+            $("#btadicionarpedido").click(function () {
+                nome = $("#nome").val()
+                if (nome == "") {
+                    alert("É necessário preencher os campos abaixo");
+                    return false;
+                }
+                else {
+                    $("#formadicionarpedido").submit();
+                }
+
+            });
+        });
+    </script>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.nome, "Nome *", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.nome, new { @class = "form-control", placeholder = "Nome" })
+            @Html.ValidationMessageFor(model => model.nome)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.descricao, "Descrição", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.descricao, new { @class = "form-control", placeholder = "Descrição" })
+            @Html.ValidationMessageFor(model => model.descricao)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.id_loja, "Loja", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownList("id_loja", String.Empty)
+            @Html.ValidationMessageFor(model => model.id_loja)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.id_status, "Status", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownList("id_status", String.Empty)
+            @Html.ValidationMessageFor(model => model.id_status)
+        </div>
+    </div>
+
+}

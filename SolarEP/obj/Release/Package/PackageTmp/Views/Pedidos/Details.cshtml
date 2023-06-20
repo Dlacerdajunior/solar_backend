@@ -1,0 +1,51 @@
+﻿@model SolarEP.Models.pedido
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>pedido</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status_pedido.status_nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status_pedido.status_nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lojas.id_loja_fabricante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lojas.id_loja_fabricante)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
